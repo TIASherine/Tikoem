@@ -279,7 +279,7 @@
             data: {
                 labels: ['Earnings'],
                 datasets: [{
-                    data: [68, 32], // Earnings and remaining
+                    data: [68, 30], // Earnings and remaining
                     backgroundColor: ['#28a745', '#f5f5f5'],
                     borderColor: '#ffffff',
                     borderWidth: 2
