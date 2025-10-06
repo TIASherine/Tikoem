@@ -22,7 +22,7 @@
             --tertiary-color: #6C8360;
             --dark-color: #3B302B;
             --light-color: #EFE9E4;
-            --background-color: #d5cbbeff;
+            --background-color: rgb(240, 235, 229);
             --card-color: #f7f0eaff;
         }
 
