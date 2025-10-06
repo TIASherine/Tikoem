@@ -196,13 +196,13 @@
                             <div class="row align-items-start">
                                 <div class="col-8">
                                     <h5 class="card-title mb-10 fw-semibold"> Penjualan </h5>
-                                    <h4 class="fw-semibold mb-3"> Rp 100.000 </h4>
+                                    <h4 class="fw-semibold mb-3"> Rp 300.000 </h4>
                                     <div class="d-flex align-items-center pb-1">
                                         <span
                                             class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
                                             <i class="ti ti-arrow-down-right text-danger"></i>
                                         </span>
-                                        <p class="text-dark me-1 fs-3 mb-0">+3%</p>
+                                        <p class="text-dark me-1 fs-3 mb-0"> +3% </p>
                                         <p class="fs-3 mb-0"> Kemarin </p>
                                     </div>
                                 </div>
