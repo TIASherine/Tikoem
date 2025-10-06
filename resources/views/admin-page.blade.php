@@ -21,8 +21,8 @@
             --secondary-color: #D4B892;
             --tertiary-color: #6C8360;
             --dark-color: #3B302B;
-            --light-color: #EFE9E4;
-            --background-color: rgb(240, 235, 229);
+            --light-color: #f5ece5;
+            --background-color: rgb(250, 247, 243);
             --card-color: #f7f0eaff;
         }
 
