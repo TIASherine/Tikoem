@@ -180,7 +180,7 @@
                                 </div>
                             </div>
                             <!-- Chart.js - Profit Chart -->
-                            <canvas id="profitChart"></canvas>
+                            <canvas id="earning"></canvas>
                         </div>
                     </div>
                 </div>
@@ -231,8 +231,8 @@
     <!-- Scripts -->
     <script>
         // Profit Chart (Line Chart)
-        var profitCtx = document.getElementById('profitChart').getContext('2d');
-        var profitChart = new Chart(profitCtx, {
+        var earnintCtx = document.getElementById('earning').getContext('2d');
+        var earning = new Chart(earnintCtx, {
             type: 'line',
             data: {
                 labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
