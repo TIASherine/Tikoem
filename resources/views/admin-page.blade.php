@@ -143,8 +143,38 @@
                     <small class="text-muted d-block" style="font-size: 0.65rem; font-weight: 500;"> Kafe GSG </small>
                 </div>
             </a>
+
+            <!-- Toggle Button -->
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+
         </div>
     </nav>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold text-primary" id="sidebarMenuLabel">Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-3">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark fw-semibold">
+                        <i class="fas fa-users me-2"></i> Daftar Karyawan
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-dark fw-semibold">
+                        <i class="fas fa-box-open me-2"></i> Produk
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -157,71 +187,87 @@
     <!-- Main Content -->
     <section id="content" class="container py-5">
         <div class="row g-4">
-            <!-- Row 1 -->
-            <div class="row">
-                <!-- Profit & Expenses Card -->
-                <div class="col-lg-8 d-flex align-items-stretch">
-                    <div class="card w-100">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between mb-1">
-                                <div class="">
-                                    <h5 class="card-title fw-semibold"> Pemasukan & Pengeluaran </h5>
-                                </div>
-                                <div class="dropdown">
-                                    <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
-                                        class="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none">
-                                        <i class="ti ti-dots-vertical fs-7 d-block"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
+            <!-- Pemasukan & Pengeluaran Card -->
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-1">
+                            <div>
+                                <h5 class="card-title fw-semibold">Pemasukan & Pengeluaran</h5>
                             </div>
-                            <!-- Chart.js - Profit Chart -->
-                            <canvas id="earning"></canvas>
+                            <div class="dropdown">
+                                <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                                    class="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none">
+                                    <i class="ti ti-dots-vertical fs-7 d-block"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
                         </div>
+                        <!-- Chart.js - Profit Chart -->
+                        <canvas id="earning"></canvas>
                     </div>
                 </div>
             </div>
 
-            <div> </div>
-
-            <!-- Monthly Earnings Card (Product Sales) -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row align-items-start">
-                                <div class="col-8">
-                                    <h5 class="card-title mb-10 fw-semibold"> Penjualan </h5>
-                                    <h4 class="fw-semibold mb-3"> Rp 300.000 </h4>
-                                    <div class="d-flex align-items-center pb-1">
-                                        <span
-                                            class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-arrow-down-right text-danger"></i>
-                                        </span>
-                                        <p class="text-dark me-1 fs-3 mb-0"> +3% </p>
-                                        <p class="fs-3 mb-0"> Kemarin </p>
-                                    </div>
+            <!-- Aktivitas Terbaru Card -->
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="card h-100 overflow-auto" style="max-height: 400px;">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3 fw-semibold">Aktivitas Terbaru</h5>
+                        <ul class="timeline-widget mb-0 position-relative mb-n5"
+                            style="list-style: none; padding-left: 0;">
+                            <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
+                                <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">09:30
                                 </div>
-                                <div class="col-4">
-                                    <div class="d-flex justify-content-end">
-                                        <div
-                                            class="text-white bg-danger rounded-circle p-6 d-flex align-items-center justify-content-center">
-                                            <i class="ti ti-currency-dollar fs-6"></i>
-                                        </div>
-                                    </div>
+                                <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
+                                    <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-2"
+                                        style="width: 12px; height: 12px; border-radius: 50%;"></span>
+                                    <span class="timeline-badge-border d-block flex-shrink-0"
+                                        style="width: 2px; background-color: #007bff; flex-grow: 1;"></span>
                                 </div>
-                            </div>
-                        </div>
-                        <div id="earning"></div>
+                                <div class="timeline-desc fs-6 text-dark mt-n1 flex-grow-1">Payment received from John
+                                    Doe of $385.90
+                                </div>
+                            </li>
+                            <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
+                                <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">10:00
+                                    am</div>
+                                <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
+                                    <span class="timeline-badge border-2 border border-info flex-shrink-0 my-2"
+                                        style="width: 12px; height: 12px; border-radius: 50%;"></span>
+                                    <span class="timeline-badge-border d-block flex-shrink-0"
+                                        style="width: 2px; background-color: #17a2b8; flex-grow: 1;"></span>
+                                </div>
+                                <div class="timeline-desc fs-6 text-dark mt-n1 fw-semibold flex-grow-1">New sale
+                                    recorded <a href="javascript:void(0)"
+                                        class="text-primary d-block fw-normal">#ML-3467</a>
+                                </div>
+                            </li>
+                            <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
+                                <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">12:00
+                                    am</div>
+                                <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
+                                    <span class="timeline-badge border-2 border border-success flex-shrink-0 my-2"
+                                        style="width: 12px; height: 12px; border-radius: 50%;"></span>
+                                    <span class="timeline-badge-border d-block flex-shrink-0"
+                                        style="width: 2px; background-color: #28a745; flex-grow: 1;"></span>
+                                </div>
+                                <div class="timeline-desc fs-6 text-dark mt-n1 flex-grow-1">Payment was made of $64.95
+                                    to Michael
+                                </div>
+                            </li>
+                            <!-- Add more timeline items as needed -->
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
