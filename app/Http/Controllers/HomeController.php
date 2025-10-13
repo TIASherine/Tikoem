@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         $data['username'] = $username;
         $data['last_login'] = date('j M, H:i');
-        $data['state'] = $username;
+        $data['state'] = $state;
 
         return view('home', $data);
     }
@@ -66,5 +66,17 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function redirectTo($tujuan) {
+        $tujuan = strtolower($tujuan);
+
+        if($tujuan === "login") {
+            return redirect()->route('auth.index');
+        } elseif($tujuan === "order") {
+            return redirect()->away('https://shopee.co.id/');
+        } else {
+            return redirect()->route('home')->with('info', 'Selamat Datang!');
+        }
     }
 }

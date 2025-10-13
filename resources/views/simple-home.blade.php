@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        $_SESSION[$username] = hash('sha256', $password); 
-    }
-}
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --color-caramel: #D4B892;
             --color-danger: #e3342f;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--color-cream);
             color: var(--color-chocolate);
-            background-image: url('https://i.pinimg.com/736x/57/19/31/57193110209ccde092dd7e46cb5b5ce7.jpg'); 
+            background-image: url('https://i.pinimg.com/736x/57/19/31/57193110209ccde092dd7e46cb5b5ce7.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -84,6 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    @if (session('info'))
+        <div class="alert alert-info">
+            {{ session('info') }}
+        </div>
+    @endif
+
     <div class="signup-card">
         <h2 class="text-3xl font-bold text-center mb-2" style="color: var(--color-chocolate);">
             Order At Tikoem!
@@ -102,45 +95,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         @endif
 
         <form action="/auth/signup" method="POST">
-            @csrf 
+            @csrf
 
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
                     <i class="fas fa-user-circle mr-2"></i>Nama Lengkap
                 </label>
-                <input type="text" class="form-control w-full p-3 border rounded-lg focus:outline-none" 
-                       name="name" id="name" required value="{{old('name')}}" 
-                       style="border-width: 2px;">
+                <input type="text" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="name" id="name" required value="{{ old('name') }}" style="border-width: 2px;">
             </div>
 
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
                     <i class="fas fa-envelope mr-2"></i>Alamat Email
                 </label>
-                <input type="email" class="form-control w-full p-3 border rounded-lg focus:outline-none" 
-                       name="email" id="email" required value="{{old('email')}}" 
-                       style="border-width: 2px;">
+                <input type="email" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="email" id="email" required value="{{ old('email') }}" style="border-width: 2px;">
             </div>
 
             <div class="mb-6">
                 <label for="password" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
                     <i class="fas fa-lock mr-2"></i>Kata Sandi
                 </label>
-                <input type="password" class="form-control w-full p-3 border rounded-lg focus:outline-none" 
-                       name="password" id="password" required 
-                       style="border-width: 2px;">
+                <input type="password" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="password" id="password" required style="border-width: 2px;">
             </div>
 
-            <button type="submit" class="btn btn-primary w-full text-white font-semibold py-3 rounded-lg text-lg"> 
+            <button type="submit" class="btn btn-primary w-full text-white font-semibold py-3 rounded-lg text-lg">
                 <i class="fas fa-coffee mr-2"></i>Daftar Sekarang
             </button>
         </form>
 
         <p class="text-center text-xs mt-4" style="color: var(--color-chocolate);">
-            Sudah punya akun? 
-            <a href="/auth" class="font-semibold underline" style="color: var(--color-coffee);">Login di sini.</a>
+            Sudah punya akun?
         </p>
-    </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('go','login') }}" class="btn btn-primary"> Go to Login </a> <br>
+                    <a href="{{ route('go','order') }}" class="btn btn-success"> Go to E-Commerce </a>
+                    <a href="{{ route('go','home') }}" class="btn btn-outline-secondary">Go to Home</a>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>

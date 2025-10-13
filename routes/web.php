@@ -28,3 +28,6 @@ Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login.p
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
 Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
+
+Route::get('/go/{tujuan}', [HomeController::class, 'redirectTo'])->name('go');
+
