@@ -52,7 +52,7 @@
 
         .hero-section {
             background-image: linear-gradient(rgba(123, 75, 51, 0.50), rgba(123, 75, 51, 0.50)),
-                url('https://i.pinimg.com/736x/70/b2/43/70b2430b4eae81b01749e693c16baa67.jpg');
+                url('/assets/images/admin_banner.png');
             background-size: cover;
             background-position: center;
             color: white;
@@ -64,7 +64,7 @@
 
         .hero-section h1 {
             font-weight: 700;
-            font-size: 2.8rem;
+            font-size: 2.8rem;npm run dev
         }
 
         .card {
