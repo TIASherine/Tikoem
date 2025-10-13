@@ -117,4 +117,48 @@ class AuthController extends Controller
 
         return view('signup-success', $request);
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+
+        return redirect('/');
+    }
+
+    public function showSignupForm()
+    {
+        return view('simple-home');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required|',
+            'email'    => ['required', 'email'],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+            ],
+        ]);
+
+        $users                   = session()->get('users', []);
+        $users[$request['name']] = [
+            'email'    => $request['email'],
+            'password' => $request['password'],
+        ];
+        session()->put('users', $users);
+        session(['username' => $request->name]);
+        session(['state' => $request->name]);
+
+        return view('signup-success', $request);
+    }
 }

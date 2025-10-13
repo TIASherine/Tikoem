@@ -62,8 +62,8 @@
                                 </span>
                             </span>
                             <span>
-                                Read the
-                                <a href="{{}" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
+                                Continue
+                                <a href="{{ route('home')}}" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
                                     <span> Klik Disini </span>
                                     <svg
                                         width="10"

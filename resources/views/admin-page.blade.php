@@ -64,7 +64,8 @@
 
         .hero-section h1 {
             font-weight: 700;
-            font-size: 2.8rem;npm run dev
+            font-size: 2.8rem;
+            npm run dev
         }
 
         .card {
@@ -169,8 +170,8 @@
             <h5 class="offcanvas-title fw-bold" style="color: var(--primary-color);" id="sidebarMenuLabel">Menu</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body p-3">
-            <ul class="nav flex-column">
+        <div class="offcanvas-body p-3 d-flex flex-column" style="height: 100%;">
+            <ul class="nav flex-column mb-auto">
                 <li class="nav-item mb-2">
                     <a href="#" class="nav-link text-dark fw-semibold">
                         <i class="fas fa-users me-2"></i> Daftar Karyawan
@@ -179,6 +180,13 @@
                 <li class="nav-item mb-2">
                     <a href="#" class="nav-link text-dark fw-semibold">
                         <i class="fas fa-box-open me-2"></i> Produk
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav flex-column mt-auto">
+                <li class="nav-item mb-2">
+                    <a href="/auth/logout" class="nav-link text-dark fw-semibold">
+                        <i class="fas fa-sign-out me-2"></i> Logout
                     </a>
                 </li>
             </ul>
@@ -242,8 +250,8 @@
                                         style="width: 2px; background-color: var(--tertiary-color); flex-grow: 1;"></span>
                                 </div>
                                 <div class="timeline-desc fs-6 text-dark mt-n1 fw-semibold flex-grow-1">New sale
-                                    recorded <a href="javascript:void(0)"
-                                        class="d-block fw-normal" style="color: var(--primary-color);">#ML-3467</a>
+                                    recorded <a href="javascript:void(0)" class="d-block fw-normal"
+                                        style="color: var(--primary-color);">#ML-3467</a>
                                 </div>
                             </li>
                             <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
@@ -329,4 +337,3 @@
 </body>
 
 </html>
-

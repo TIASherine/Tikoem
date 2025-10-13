@@ -37,7 +37,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 1.5rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            max-width: 550px;
+            max-width: 500px;
             width: 90%;
             padding: 2.5rem;
         }
@@ -79,7 +79,7 @@
 
     <div class="signup-card">
         <h2 class="text-3xl font-bold text-center mb-2" style="color: var(--color-chocolate);">
-            Order At Tikoem!
+            Register
         </h2>
 
         <br>
@@ -99,53 +99,32 @@
 
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
-                    <i class="fas fa-user-circle mr-2"></i>Nama Lengkap
+                    <i class="fas fa-user-circle mr-2"></i> Nama Lengkap
                 </label>
                 <input type="text" class="form-control w-full p-3 border rounded-lg focus:outline-none"
                     name="name" id="name" required value="{{ old('name') }}" style="border-width: 2px;">
             </div>
 
             <div class="mb-4">
-                <label for="email" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
-                    <i class="fas fa-envelope mr-2"></i>Alamat Email
+                <label for="alamat" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
+                    <i class="fas fa-envelope mr-2"></i> Alamat
                 </label>
-                <input type="email" class="form-control w-full p-3 border rounded-lg focus:outline-none"
-                    name="email" id="email" required value="{{ old('email') }}" style="border-width: 2px;">
+                <input type="textarea" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="alamat" id="alamat" required style="border-width: 2px;">
             </div>
 
             <div class="mb-6">
-                <label for="password" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
-                    <i class="fas fa-lock mr-2"></i>Kata Sandi
+                <label for="tl" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
+                    <i class="fas fa-lock mr-2"></i> Tanggal Lahir
                 </label>
-                <input type="password" class="form-control w-full p-3 border rounded-lg focus:outline-none"
-                    name="password" id="password" required style="border-width: 2px;">
+                <input type="datetime-local" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="tl" id="tl" required style="border-width: 2px;">
             </div>
 
             <button type="submit" class="btn btn-primary w-full text-white font-semibold py-3 rounded-lg text-lg">
-                <i class="fas fa-coffee mr-2"></i>Daftar Sekarang
+                <i class="fas fa-coffee mr-2"></i> Register
             </button>
         </form>
-
-        <div class="card">
-            <div class="card-body">
-
-                <p class="text-center text-xs mt-4" style="color: var(--color-chocolate);">
-                    Click on these buttons to navigate to other pages!
-                </p>
-                <br>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="{{ route('go', 'register') }}"
-                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to Register
-                    </a> &nbsp;
-                    <a href="{{ route('go', 'order') }}"
-                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to E-Commerce
-                    </a> &nbsp;
-                    <a href="{{ route('go', 'home') }}"
-                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to Home
-                    </a>
-                </div>
-            </div>
-        </div>
 </body>
 
 </html>

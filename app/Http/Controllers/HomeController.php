@@ -71,8 +71,8 @@ class HomeController extends Controller
     public function redirectTo($tujuan) {
         $tujuan = strtolower($tujuan);
 
-        if($tujuan === "login") {
-            return redirect()->route('auth.login.show');
+        if($tujuan === "register") {
+            return redirect()->route('auth.register.show');
         } elseif($tujuan === "order") {
             return redirect()->away('https://shopee.co.id/');
         } else {

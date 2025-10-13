@@ -14,14 +14,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Tikoem Color Palette (Coffee & Chocolate Theme) */
         :root {
-            --primary-color: #7B4B33;       /* kopi gelap tapi hangat */
-            --secondary-color: #D4B892;     /* krem keemasan */
-            --dark-color: #3B302B;          /* coklat kehitaman */
-            --light-color: #b8a89bff;         /* putih krem */
-            --background-color: #FAF7F3;    /* krem muda, tidak silau */
-            --highlight-color: #6C8360;     /* hijau olive lembut untuk sukses */
+            --primary-color: #7B4B33;
+            --secondary-color: #D4B892;
+            --dark-color: #3B302B;
+            --light-color: #b8a89bff;
+            --background-color: #FAF7F3;
+            --highlight-color: #6C8360;
         }
 
         body {
