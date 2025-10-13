@@ -72,7 +72,7 @@ class HomeController extends Controller
         $tujuan = strtolower($tujuan);
 
         if($tujuan === "login") {
-            return redirect()->route('auth.index');
+            return redirect()->route('auth.login.show');
         } elseif($tujuan === "order") {
             return redirect()->away('https://shopee.co.id/');
         } else {
