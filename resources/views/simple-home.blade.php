@@ -37,7 +37,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 1.5rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-            max-width: 480px;
+            max-width: 500px;
             width: 90%;
             padding: 2.5rem;
         }
@@ -126,16 +126,23 @@
             </button>
         </form>
 
-        <p class="text-center text-xs mt-4" style="color: var(--color-chocolate);">
-            Sudah punya akun?
-        </p>
-
         <div class="card">
             <div class="card-body">
+
+                <p class="text-center text-xs mt-4" style="color: var(--color-chocolate);">
+                    Click on these buttons to navigate to other pages!
+                </p>
+                <br>
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="{{ route('go','login') }}" class="btn btn-primary"> Go to Login </a> <br>
-                    <a href="{{ route('go','order') }}" class="btn btn-success"> Go to E-Commerce </a>
-                    <a href="{{ route('go','home') }}" class="btn btn-outline-secondary">Go to Home</a>
+                    <a href="{{ route('go', 'login') }}"
+                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to Login
+                    </a> &nbsp;
+                    <a href="{{ route('go', 'order') }}"
+                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to E-Commerce
+                    </a> &nbsp;
+                    <a href="{{ route('go', 'home') }}"
+                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to Home
+                    </a>
                 </div>
             </div>
         </div>

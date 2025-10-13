@@ -8,173 +8,175 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
-    :root {
-        --primary-color: #7B4B33;
-        --secondary-color: #D4B892;
-        --tertiary-color: #6C8360;
-        --dark-color: #3B302B;
-        --light-color: #EFE9E4;
-        --background-color: #d5cbbeff;
-        --card-color: #f7f0eaff;
-    }
+        :root {
+            --primary-color: #7B4B33;
+            --secondary-color: #D4B892;
+            --tertiary-color: #6C8360;
+            --dark-color: #3B302B;
+            --light-color: #EFE9E4;
+            --background-color: #d5cbbeff;
+            --card-color: #f7f0eaff;
+        }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--background-color);
-        color: var(--dark-color);
-        background-image: url('https://i.pinimg.com/736x/f9/fb/2f/f9fb2ffac6e09e1104e7d4057735591a.jpg');
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--dark-color);
+            background-image: url('https://i.pinimg.com/736x/f9/fb/2f/f9fb2ffac6e09e1104e7d4057735591a.jpg');
+        }
 
-    .navbar {
-        background-color: var(--card-color) !important;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    }
+        .navbar {
+            background-color: var(--card-color) !important;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
 
-    .navbar-brand {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        color: var(--primary-color) !important;
-        display: flex;
-        align-items: center;
-    }
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            display: flex;
+            align-items: center;
+        }
 
-    .navbar-brand .logo-text {
-        margin-left: 8px;
-        font-size: 1.3rem;
-    }
+        .navbar-brand .logo-text {
+            margin-left: 8px;
+            font-size: 1.3rem;
+        }
 
-    .nav-link {
-        font-weight: 500;
-        color: var(--dark-color) !important;
-        transition: color 0.3s ease;
-    }
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-color) !important;
+            transition: color 0.3s ease;
+        }
 
-    .nav-link:hover,
-    .nav-link.active {
-        color: var(--primary-color) !important;
-    }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
 
-    .hero-section {
-        background-image: linear-gradient(rgba(123, 75, 51, 0.50), rgba(123, 75, 51, 0.50)),
-            url('https://i.pinimg.com/736x/70/b2/43/70b2430b4eae81b01749e693c16baa67.jpg');
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 80px 0;
-        text-align: center;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-    }
+        .hero-section {
+            background-image: linear-gradient(rgba(123, 75, 51, 0.50), rgba(123, 75, 51, 0.50)),
+                url('https://i.pinimg.com/736x/70/b2/43/70b2430b4eae81b01749e693c16baa67.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
 
-    .hero-section h1 {
-        font-weight: 700;
-        font-size: 2.8rem;
-    }
+        .hero-section h1 {
+            font-weight: 700;
+            font-size: 2.8rem;
+        }
 
-    .card {
-        border: none;
-        border-radius: 16px;
-        background-color: var(--card-color);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .card {
+            border: none;
+            border-radius: 16px;
+            background-color: var(--card-color);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .card .list-group-item {
-    background-color: var(--card-color);
-    border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
+        .card .list-group-item {
+            background-color: var(--card-color);
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-    .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
 
-    .card-title {
-        color: var(--primary-color);
-        font-weight: 600;
-    }
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
 
-    .btn-primary {
-        background-color: var(--primary-color);
-        border: none;
-        font-weight: 600;
-        border-radius: 10px;
-    }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            border-radius: 10px;
+        }
 
-    .btn-primary:hover {
-        background-color: #643B26;
-    }
+        .btn-primary:hover {
+            background-color: #643B26;
+        }
 
-    .alert-primary {
-        background-color: #FFF7F3;
-        color: var(--primary-color);
-        border-left: 5px solid var(--primary-color);
-        border-radius: 8px;
-    }
+        .alert-primary {
+            background-color: #FFF7F3;
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            border-radius: 8px;
+        }
 
-    .alert-success {
-        background-color: #F6F8F4;
-        color: var(--tertiary-color);
-        border-left: 5px solid var(--tertiary-color);
-        border-radius: 8px;
-    }
+        .alert-success {
+            background-color: #F6F8F4;
+            color: var(--tertiary-color);
+            border-left: 5px solid var(--tertiary-color);
+            border-radius: 8px;
+        }
 
-    .accordion-item {
-        border: 1px solid var(--light-color);
-        border-radius: 12px;
-        margin-top: 10px;
-    }
+        .accordion-item {
+            border: 1px solid var(--light-color);
+            border-radius: 12px;
+            margin-top: 10px;
+        }
 
-    .accordion-button {
-        background-color: var(--background-color);
-        color: var(--dark-color);
-        font-weight: 600;
-    }
+        .accordion-button {
+            background-color: var(--background-color);
+            color: var(--dark-color);
+            font-weight: 600;
+        }
 
-    .accordion-button:not(.collapsed) {
-        background-color: var(--primary-color);
-        color: white;
-    }
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-    .badge {
-        font-weight: 600;
-        border-radius: 50px;
-        padding: 0.5em 0.8em;
-    }
+        .badge {
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.5em 0.8em;
+        }
 
-    .badge-seller {
-        background-color: var(--secondary-color);
-        color: var(--dark-color);
-    }
+        .badge-seller {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
 
-    .badge-delivery {
-        background-color: var(--tertiary-color);
-        color: white;
-    }
+        .badge-delivery {
+            background-color: var(--tertiary-color);
+            color: white;
+        }
 
-    .table thead {
-        background-color: var(--primary-color);
-        color: white;
-    }
+        .table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-    .footer {
-        margin-top: 60px;
-        padding: 30px 0;
-        background-color: var(--dark-color);
-        color: white;
-        text-align: center;
-        border-top-left-radius: 16px;
-        border-top-right-radius: 16px;
-    }
+        .footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
 
-    .footer p {
-        color: #c7c7c7;
-    }
-</style>
+        .footer p {
+            color: #c7c7c7;
+        }
+    </style>
 
 </head>
 
@@ -203,7 +205,7 @@
     <section class="hero-section">
         <div class="container">
             <h2> Selamat datang, {{ $username }}! </h4>
-            <p>Siap untuk hari penuh aroma kopi? Terakhir login {{ $last_login }} </p>
+                <p>Siap untuk hari penuh aroma kopi? Terakhir login {{ $last_login }} </p>
         </div>
     </section>
 
@@ -228,7 +230,8 @@
                         <div>
                             <h5 class="card-title"><i class="fas fa-coffee me-2"></i>Inspirasi Harian</h5>
                             <p class="text-muted">Lihat semua racikan minuman dan camilan kami.</p>
-                            <a href="#" class="btn btn-primary mt-3">Telusuri Menu <i class="fas fa-mug-hot ms-2"></i></a>
+                            <a href="#" class="btn btn-primary mt-3">Telusuri Menu <i
+                                    class="fas fa-mug-hot ms-2"></i></a>
                         </div>
 
                         <hr class="my-4 text-muted">
@@ -241,9 +244,11 @@
                                         <i class="fas fa-info-circle me-2"></i>Tentang Tikoem
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionInfo">
                                     <div class="accordion-body text-muted">
-                                        Tikoem adalah kedai kopi harian yang mengutamakan kenyamanan, kualitas biji kopi lokal terbaik, dan suasana hangat untuk semua pelanggan setia kami.
+                                        Tikoem adalah kedai kopi harian yang mengutamakan kenyamanan, kualitas biji kopi
+                                        lokal terbaik, dan suasana hangat untuk semua pelanggan setia kami.
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +310,8 @@
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-users-cog me-2"></i>Tim Kopi Terbaik</h5>
                         <div class="mb-3">
-                            <span class="badge badge-seller me-2"><i class="fas fa-cash-register me-1"></i> Barista/Kasir</span>
+                            <span class="badge badge-seller me-2"><i class="fas fa-cash-register me-1"></i>
+                                Barista/Kasir</span>
                             <span class="badge badge-delivery"><i class="fas fa-motorcycle me-1"></i> Kurir</span>
                         </div>
                         <ul class="list-group list-group-flush">
@@ -318,7 +324,8 @@
                                 <span class="badge badge-delivery">Kurir</span>
                             </li>
                         </ul>
-                        <a href="#" class="btn btn-primary w-100 mt-3">Kelola Tim <i class="fas fa-chevron-right ms-2"></i></a>
+                        <a href="#" class="btn btn-primary w-100 mt-3">Kelola Tim <i
+                                class="fas fa-chevron-right ms-2"></i></a>
                     </div>
                 </div>
             </div>

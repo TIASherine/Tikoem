@@ -102,6 +102,16 @@
             background-color: #643B26;
         }
 
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
         .alert-primary {
             background-color: #FFF7F3;
             color: var(--primary-color);
@@ -154,9 +164,9 @@
     </nav>
 
     <!-- Offcanvas Sidebar -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title fw-bold text-primary" id="sidebarMenuLabel">Menu</h5>
+            <h5 class="offcanvas-title fw-bold" style="color: var(--primary-color);" id="sidebarMenuLabel">Menu</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-3">
@@ -191,20 +201,9 @@
             <div class="col-lg-8 d-flex align-items-stretch">
                 <div class="card w-100">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between mb-1">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
                             <div>
                                 <h5 class="card-title fw-semibold">Pemasukan & Pengeluaran</h5>
-                            </div>
-                            <div class="dropdown">
-                                <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
-                                    class="rounded-circle btn-transparent rounded-circle btn-sm px-1 btn shadow-none">
-                                    <i class="ti ti-dots-vertical fs-7 d-block"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
                             </div>
                         </div>
                         <!-- Chart.js - Profit Chart -->
@@ -227,7 +226,7 @@
                                     <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-2"
                                         style="width: 12px; height: 12px; border-radius: 50%;"></span>
                                     <span class="timeline-badge-border d-block flex-shrink-0"
-                                        style="width: 2px; background-color: #007bff; flex-grow: 1;"></span>
+                                        style="width: 2px; background-color: var(--primary-color); flex-grow: 1;"></span>
                                 </div>
                                 <div class="timeline-desc fs-6 text-dark mt-n1 flex-grow-1">Payment received from John
                                     Doe of $385.90
@@ -237,14 +236,14 @@
                                 <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">10:00
                                     am</div>
                                 <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
-                                    <span class="timeline-badge border-2 border border-info flex-shrink-0 my-2"
-                                        style="width: 12px; height: 12px; border-radius: 50%;"></span>
+                                    <span class="timeline-badge border-2 border flex-shrink-0 my-2"
+                                        style="width: 12px; height: 12px; border-radius: 50%; border-color: var(--tertiary-color) !important;"></span>
                                     <span class="timeline-badge-border d-block flex-shrink-0"
-                                        style="width: 2px; background-color: #17a2b8; flex-grow: 1;"></span>
+                                        style="width: 2px; background-color: var(--tertiary-color); flex-grow: 1;"></span>
                                 </div>
                                 <div class="timeline-desc fs-6 text-dark mt-n1 fw-semibold flex-grow-1">New sale
                                     recorded <a href="javascript:void(0)"
-                                        class="text-primary d-block fw-normal">#ML-3467</a>
+                                        class="d-block fw-normal" style="color: var(--primary-color);">#ML-3467</a>
                                 </div>
                             </li>
                             <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
@@ -287,12 +286,20 @@
                 datasets: [{
                         label: 'Pemasukan',
                         data: [120, 150, 110, 130, 170, 190, 160, 200, 180, 210, 230, 220],
-                        backgroundColor: '#28a745', // Hijau
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
                     },
                     {
                         label: 'Pengeluaran',
                         data: [100, 110, 130, 90, 120, 130, 190, 150, 130, 170, 160, 180],
-                        backgroundColor: '#dc3545', // Merah
+                        backgroundColor: 'rgba(220, 53, 69, 0.2)',
+                        borderColor: 'rgba(220, 53, 69, 1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
                     }
                 ]
             },
@@ -308,37 +315,10 @@
                     },
                 },
                 scales: {
-                    x: {
-                        stacked: false,
-                    },
                     y: {
                         beginAtZero: true
                     }
                 }
-            }
-        });
-
-        // Product Sales Card - Earnings (Donut Chart)
-        var earningCtx = document.getElementById('earning').getContext('2d');
-        var earningChart = new Chart(earningCtx, {
-            type: 'pie',
-            data: {
-                labels: ['Earnings'],
-                datasets: [{
-                    data: [68, 30], // Earnings and remaining
-                    backgroundColor: ['#28a745', '#f5f5f5'],
-                    borderColor: '#ffffff',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                cutoutPercentage: 70,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                },
             }
         });
     </script>
@@ -349,3 +329,4 @@
 </body>
 
 </html>
+

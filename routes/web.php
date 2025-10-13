@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
         return view('welcome');
     });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/auth', [AuthController::class, 'index'])->name('auth.login.show');
 
