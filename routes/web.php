@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelangganController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -44,8 +46,12 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     Route::get('logout', 'logout')->name('logout');
 });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::get('/redirect/{parameter}', [HomeController::class, 'redirectTo'])->name('redirect.to');
 
 Route::get('/go/{tujuan}', [HomeController::class, 'redirectTo'])->name('go');
+
+route::get('pelanggan', [PelangganController::class, 'index'])->name('pelanggan.list');
 
 require __DIR__.'/auth.php';
