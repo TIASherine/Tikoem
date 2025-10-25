@@ -52,6 +52,12 @@ Route::get('/redirect/{parameter}', [HomeController::class, 'redirectTo'])->name
 
 Route::get('/go/{tujuan}', [HomeController::class, 'redirectTo'])->name('go');
 
-route::get('pelanggan', [PelangganController::class, 'index'])->name('pelanggan.list');
+Route::controller(PelangganController::class)->prefix('pelanggan')->name('pelanggan.')->group(function () {
+    Route::get('', 'index')->name('list');
+
+    Route::get('create', 'create')->name('create');
+    
+    Route::post('store', 'store')->name('store');
+});
 
 require __DIR__.'/auth.php';

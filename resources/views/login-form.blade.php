@@ -15,118 +15,123 @@
         rel="stylesheet">
 
     <style>
-    :root {
-        --primary-color: #7B4B33;
-        --secondary-color: #D4B892;
-        --dark-color: #3B302B;
-        --light-color: #EFE9E4;
-        --background-color: #FAF7F3;
-        --highlight-color: #6C8360;
-    }
+        :root {
+            --primary-color: #7B4B33;
+            --secondary-color: #D4B892;
+            --dark-color: #3B302B;
+            --light-color: #EFE9E4;
+            --background-color: #FAF7F3;
+            --highlight-color: #6C8360;
+        }
 
-    body {
-        background-image: url('https://i.pinimg.com/736x/57/19/31/57193110209ccde092dd7e46cb5b5ce7.jpg');
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'Inter', sans-serif;
-    }
+        body {
+            background-image: url('https://i.pinimg.com/736x/57/19/31/57193110209ccde092dd7e46cb5b5ce7.jpg');
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
 
-    .login-card {
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        border-radius: 1.5rem;
-        background-color: #ffffff;
-        border: none;
-        overflow: hidden;
-    }
+        .login-card {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 1.5rem;
+            background-color: #ffffff;
+            border: none;
+            overflow: hidden;
+        }
 
-    .card-header {
-        background-color: var(--primary-color);
-        color: white;
-        border-top-left-radius: 1.5rem;
-        border-top-right-radius: 1.5rem;
-        text-align: center;
-        padding: 1.5rem;
-    }
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            text-align: center;
+            padding: 1.5rem;
+        }
 
-    .header-content h3 {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-        font-size: 1.8rem;
-    }
+        .header-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 1.8rem;
+        }
 
-    .header-content p {
-        font-weight: 300;
-    }
+        .header-content p {
+            font-weight: 300;
+        }
 
-    .card-body {
-        padding: 2.5rem;
-    }
+        .card-body {
+            padding: 2.5rem;
+        }
 
-    .form-control {
-        border-radius: 0.75rem;
-        border: 1px solid var(--secondary-color);
-        padding: 0.75rem 1rem;
-    }
+        .form-control {
+            border-radius: 0.75rem;
+            border: 1px solid var(--secondary-color);
+            padding: 0.75rem 1rem;
+        }
 
-    .form-control:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 0.25rem rgba(123, 75, 51, 0.25);
-    }
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(123, 75, 51, 0.25);
+        }
 
 
-    .btn-primary {
-        border-radius: 0.75rem;
-        background-color: var(--primary-color);
-        border: none;
-        padding: 0.75rem 1rem;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-    }
+        .btn-primary {
+            border-radius: 0.75rem;
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
 
-    .btn-primary:hover {
-        background-color: var(--dark-color);
-    }
+        .btn-primary:hover {
+            background-color: var(--dark-color);
+        }
 
-    .card-footer {
-        background-color: transparent;
-        text-align: center;
-        padding-bottom: 1.5rem;
-    }
+        .card-footer {
+            background-color: transparent;
+            text-align: center;
+            padding-bottom: 1.5rem;
+        }
 
-    .small-text {
-        color: var(--dark-color);
-    }
+        .small-text {
+            color: var(--dark-color);
+        }
 
-    a {
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.3s ease;
-    }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
 
-    a:hover {
-        color: var(--dark-color);
-    }
+        a:hover {
+            color: var(--dark-color);
+        }
 
-    .alert-danger {
-        color: #842029;
-        background-color: #f8d7da;
-        border-color: #f5c2c7;
-        border-radius: 0.75rem;
-    }
+        .alert-danger {
+            color: #842029;
+            background-color: #f8d7da;
+            border-color: #f5c2c7;
+            border-radius: 0.75rem;
+        }
     </style>
 </head>
 
 <body>
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-6">
                 <div class="card login-card">
                     <div class="card-header">
+                        @if (session('message_success'))
+                        <div id="success-alert" class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                            {{ session('message_success') }}
+                        </div>
+                        @endif
+
                         <div class="header-content">
                             <i class="fas fa-mug-hot fa-3x mb-2" style="color: var(--secondary-color);"></i>
                             <h3> Masuk Kembali Ke Akun Anda </h3>
@@ -172,3 +177,14 @@
 </body>
 
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const successAlert = document.getElementById('success-alert');
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.remove();
+            }, 1500);
+        }
+    });
+</script>

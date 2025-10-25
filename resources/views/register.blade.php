@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Daftar Akun </title>
+    <title> Register </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -94,7 +94,7 @@
             </div>
         @endif
 
-        <form action="/auth/signup" method="POST">
+        <form action="/auth/register" method="POST">
             @csrf
 
             <div class="mb-4">
@@ -102,7 +102,7 @@
                     <i class="fas fa-user-circle mr-2"></i> Nama Lengkap
                 </label>
                 <input type="text" class="form-control w-full p-3 border rounded-lg focus:outline-none"
-                    name="name" id="name" required value="{{ old('name') }}" style="border-width: 2px;">
+                    name="name" id="name" required style="border-width: 2px;">
             </div>
 
             <div class="mb-4">
@@ -117,8 +117,24 @@
                 <label for="tl" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
                     <i class="fas fa-lock mr-2"></i> Tanggal Lahir
                 </label>
-                <input type="datetime-local" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                <input type="date" class="form-control w-full p-3 border rounded-lg focus:outline-none"
                     name="tl" id="tl" required style="border-width: 2px;">
+            </div>
+
+            <div class="mb-6">
+                <label for="password" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
+                    <i class="fas fa-lock mr-2"></i> Password
+                </label>
+                <input type="password" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="password" id="password" required style="border-width: 2px;">
+            </div>
+
+            <div class="mb-6">
+                <label for="confirmPassword" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
+                    <i class="fas fa-lock mr-2"></i> Confirm Password
+                </label>
+                <input type="password" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="confirmPassword" id="confirmPassword" required style="border-width: 2px;">
             </div>
 
             <button type="submit" class="btn btn-primary w-full text-white font-semibold py-3 rounded-lg text-lg">

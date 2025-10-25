@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -73,7 +74,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name', 'password' => [
+            'name',
+            'password' => [
                 'required',
                 'string',
                 'min:3',
@@ -137,28 +139,20 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
-            'name'     => 'required|',
-            'email'    => ['required', 'email'],
-            'password' => [
-                'required',
-                'string',
-                'min:8',
-                'regex:/[a-z]/',
-                'regex:/[A-Z]/',
-                'regex:/[0-9]/',
+        $request->validate(
+            [
+                'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z\s]+$/',
+                'alamat' => 'required|string|max:300',
+                'tl' => 'required|date|before:today',
+                'password' => 'required|string|regex:/[A-Z]/|regex:/[0-9]/',
+                'confirmPassword' => 'required|same:password',
             ],
-        ]);
 
-        $users                   = session()->get('users', []);
-        $users[$request['name']] = [
-            'email'    => $request['email'],
-            'password' => $request['password'],
-        ];
-        session()->put('users', $users);
-        session(['username' => $request->name]);
-        session(['state' => $request->name]);
+            ['confirmPassword.same' => 'Konfirmasi Password tidak sesuai.',]
+        );
 
-        return view('signup-success', $request);
+        session()->flash('message_success', 'Registrasi Berhasil! Silahkan Login');
+
+        return redirect('auth')->with('message_success', 'Registrasi berhasil! Silahkan Login');
     }
 }

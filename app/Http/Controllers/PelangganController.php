@@ -22,7 +22,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pelanggan.create');
     }
 
     /**
@@ -30,7 +30,7 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
