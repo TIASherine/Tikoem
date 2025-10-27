@@ -56,8 +56,23 @@ Route::controller(PelangganController::class)->prefix('pelanggan')->name('pelang
     Route::get('', 'index')->name('list');
 
     Route::get('create', 'create')->name('create');
-    
+
+    Route::post('store', 'store')->name('store');
+
+    Route::get('edit/{param1}', 'edit')->name('edit');
+
+    Route::post('update', 'update')->name('update');
+
+    Route::get('destroy/{param1}', 'destroy')->name('destroy');
+});
+
+Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function () {
+    Route::get('', 'index')->name('list');
+
+    Route::get('create', 'create')->name('create');
+
     Route::post('store', 'store')->name('store');
 });
+
 
 require __DIR__.'/auth.php';

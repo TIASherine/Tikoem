@@ -377,11 +377,11 @@
                         </li>
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('pelanggan.list') }}"> Pelanggan </a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Data</li>
+                        <li class="breadcrumb-item active" aria-current="page"> Edit Data</li>
                     </ol>
                 </nav>
-                <h2 class="h4"> Tambah Data Pelanggan </h2>
-                <p class="mb-0"> Form Tambah Data Pelanggan Baru </p>
+                <h2 class="h4"> Edit Pelanggan </h2>
+                <p class="mb-0"> Form Perubahan Data Pelanggan </p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <a href="{{ route('pelanggan.create') }}"
@@ -408,21 +408,21 @@
                 </div>
             @endif
 
-            <form method="POST" action="/pelanggan/store">
+            <form method="POST" action="{{ route('pelanggan.update')}}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="first_name">First Name</label>
                             <input class="form-control" id="first_name" name="first_name" type="text"
-                                placeholder="Enter your first name" required>
+                                value="{{ $dataPelanggan->first_name }}" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="last_name">Last Name</label>
                             <input class="form-control" id="last_name" name="last_name" type="text"
-                                placeholder="Also your last name" required>
+                                value="{{ $dataPelanggan->last_name }}" required>
                         </div>
                     </div>
                 </div>
@@ -439,7 +439,7 @@
                                 </svg>
                             </span>
                             <input data-datepicker="" class="form-control" id="birthday" name="birthday"
-                                type="text" placeholder="yyyy/mm/dd" required>
+                                type="text" value="{{ $dataPelanggan->birthday }}" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -447,8 +447,8 @@
                         <select class="form-select mb-0" id="gender" name="gender"
                             aria-label="Gender select example">
                             <option selected> Gender </option>
-                            <option value="Female"> Female </option>
-                            <option value="Male"> Male </option>
+                            <option value="Female" {{ $dataPelanggan->gender ==  'Female' ? 'selected' : '' }}> Female </option>
+                            <option value="Male" {{ $dataPelanggan->gender ==  'Male' ? 'selected' : '' }}> Male </option>
                         </select>
                     </div>
                 </div>
@@ -457,20 +457,22 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input class="form-control" id="email" name="email" type="email"
-                                placeholder="name@company.com" required>
+                                value="{{ $dataPelanggan->email }}" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             <label for="phone">Phone</label>
                             <input class="form-control" id="phone" name="phone" type="number"
-                                placeholder="+12-345 678 910" required>
+                                value="{{ $dataPelanggan->phone }}" required>
                         </div>
                     </div>
                 </div>
 
+                <input type="hidden" name="pelanggan_id" value="{{ $dataPelanggan->pelanggan_id}}"/>
+
                 <div class="mt-3">
-                    <button class="btn btn-success text-white mt-2 animate-up-2" type="submit"> Simpan </button>
+                    <button class="btn btn-info text-white mt-2 animate-up-2" type="submit"> Simpan Perubahan </button>
                 </div>
             </form>
         </div>
