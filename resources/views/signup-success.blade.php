@@ -33,7 +33,6 @@
             min-height: 100vh;
         }
 
-        /* Navbar Styling */
         .navbar {
             background-color: white !important;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
@@ -43,7 +42,6 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             color: var(--primary-color) !important;
-            /* Using d-block to ensure alignment with Bootstrap */
         }
 
         .nav-link {
@@ -56,22 +54,21 @@
             color: var(--primary-color) !important;
         }
 
-        /* Hero Section for Confirmation (DIUBAH KE PUTIH KREM) */
         .hero-section {
-            background-color: var(--light-color); /* Menggunakan warna krem muda */
-            background-image: none; /* Menghilangkan gradient coklat */
-            color: var(--dark-color); /* Mengubah warna teks menjadi gelap */
+            background-color: var(--light-color);
+            background-image: none;
+            color: var(--dark-color);
             padding: 80px 0 120px 0;
             text-align: center;
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Tambahkan shadow ringan */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         .hero-section h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary-color); /* Judul utama tetap warna kopi */
+            color: var(--primary-color);
         }
 
         .confirmation-card {
@@ -79,8 +76,8 @@
             border-radius: 1.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             max-width: 600px;
-            margin: -80px auto 50px auto; /* Pull the card up into the hero section */
-            padding: 30px; /* Custom padding */
+            margin: -80px auto 50px auto;
+            padding: 30px;
         }
 
         .detail-item {
@@ -91,15 +88,15 @@
             background-color: var(--primary-color);
             color: white;
             transition: background-color 0.3s ease;
-            font-weight: 600; /* Custom font weight */
-            padding: 0.75rem 1rem; /* Custom padding Y and X */
-            border-radius: 1rem !important; /* Custom rounded-xl */
-            font-size: 1.25rem; /* Custom large text */
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem !important;
+            font-size: 1.25rem;
         }
 
         .btn-main:hover {
             background-color: var(--dark-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Custom shadow on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .footer {
@@ -112,12 +109,10 @@
             border-top-right-radius: 16px;
         }
 
-        /* Responsive Adjustments for Bootstrap */
         .navbar-brand i {
             margin-right: 0.5rem;
         }
 
-        /* Mengubah warna ikon checklist menjadi highlight color saat di hero section baru */
         .hero-section .fa-check-circle {
             color: var(--highlight-color) !important;
         }
@@ -161,20 +156,30 @@
             Detail Akun Anda
         </h3>
 
-        <!-- Name Confirmation -->
+        <!-- Name -->
         <div class="detail-item p-3 mb-4 rounded bg-light">
             <p class="text-secondary mb-1">
-                <i class="fas fa-user me-2"></i>Nama Pengguna
+                <i class="fas fa-user me-2"></i> Nama Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
                 {{ $name }}
             </p>
         </div>
-        
-        <!-- Password Confirmation -->
+
+        <!-- Email -->
         <div class="detail-item p-3 mb-4 rounded bg-light">
             <p class="text-secondary mb-1">
-                <i class="fas fa-key me-2"></i>Kata Sandi Anda
+                <i class="fas fa-user me-2"></i> Email Anda
+            </p>
+            <p class="h5 font-weight-bold" style="color: var(--dark-color);">
+                {{ $email }}
+            </p>
+        </div>
+
+        <!-- Password -->
+        <div class="detail-item p-3 mb-4 rounded bg-light">
+            <p class="text-secondary mb-1">
+                <i class="fas fa-key me-2"></i> Kata Sandi Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
                 {{ $password }}

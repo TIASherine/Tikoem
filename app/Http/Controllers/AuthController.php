@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -74,13 +73,8 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name',
-            'password' => [
-                'required',
-                'string',
-                'min:3',
-                'regex:/[A-Z]/',
-            ],
+            'name'           => 'required|string|max:100',
+            'password' => 'required|string|min:3|max:100',
         ]);
         $users = session()->get('users', []);
 
@@ -96,16 +90,12 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         $request->validate([
-            'name'     => 'required|max:10',
-            'email'    => ['required', 'email'],
-            'password' => [
-                'required',
-                'string',
-                'min:8',
-                'regex:/[a-z]/',
-                'regex:/[A-Z]/',
-                'regex:/[0-9]/',
-            ],
+            'name'           => 'required|string|max:100',
+            'password' => 'required|string|min:3|max:100',
+            'email'           => 'required|email',
+            'confirmPassword' => 'required|same:password',
+        ], [
+            'confirmPassword.same' => 'Konfirmasi Password tidak sesuai.',
         ]);
 
         $users                   = session()->get('users', []);
@@ -114,7 +104,7 @@ class AuthController extends Controller
             'password' => $request['password'],
         ];
         session()->put('users', $users);
-        session(['username' => $request->name]);
+        session(['name' => $request->name]);
         session(['state' => $request->name]);
 
         return view('signup-success', $request);
@@ -129,30 +119,6 @@ class AuthController extends Controller
 
     public function showSignupForm()
     {
-        return view('simple-home');
-    }
-
-    public function showRegisterForm()
-    {
-        return view('register');
-    }
-
-    public function register(Request $request)
-    {
-        $request->validate(
-            [
-                'name' => 'required|string|min:3|max:100|regex:/^[a-zA-Z\s]+$/',
-                'alamat' => 'required|string|max:300',
-                'tl' => 'required|date|before:today',
-                'password' => 'required|string|regex:/[A-Z]/|regex:/[0-9]/',
-                'confirmPassword' => 'required|same:password',
-            ],
-
-            ['confirmPassword.same' => 'Konfirmasi Password tidak sesuai.',]
-        );
-
-        session()->flash('message_success', 'Registrasi Berhasil! Silahkan Login');
-
-        return redirect('auth')->with('message_success', 'Registrasi berhasil! Silahkan Login');
+        return view('signup-form');
     }
 }

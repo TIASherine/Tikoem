@@ -121,31 +121,18 @@
                     name="password" id="password" required style="border-width: 2px;">
             </div>
 
+            <div class="mb-6">
+                <label for="confirmPassword" class="block text-sm font-medium mb-1" style="color: var(--color-chocolate);">
+                    <i class="fas fa-lock mr-2"></i>Konfirmasi Kata Sandi
+                </label>
+                <input type="password" class="form-control w-full p-3 border rounded-lg focus:outline-none"
+                    name="confirmPassword" id="confirmPassword" required style="border-width: 2px;">
+            </div>
+
             <button type="submit" class="btn btn-primary w-full text-white font-semibold py-3 rounded-lg text-lg">
                 <i class="fas fa-coffee mr-2"></i>Daftar Sekarang
             </button>
         </form>
-
-        <div class="card">
-            <div class="card-body">
-
-                <p class="text-center text-xs mt-4" style="color: var(--color-chocolate);">
-                    Click on these buttons to navigate to other pages!
-                </p>
-                <br>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="{{ route('go', 'register') }}"
-                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to Register
-                    </a> &nbsp;
-                    <a href="{{ route('go', 'order') }}"
-                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to E-Commerce
-                    </a> &nbsp;
-                    <a href="{{ route('go', 'home') }}"
-                        class="bg-stone-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded"> Go to Home
-                    </a>
-                </div>
-            </div>
-        </div>
 </body>
 
 </html>

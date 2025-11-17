@@ -10,14 +10,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $username = session('username', 'Karyawan');
-        $state = session('state', 'Login');
+        session(['state' => session('Admin') ?? session('Karyawan') ?? session('Pelanggan')]);
+        session(['name' => session('name')]);
+        session(['last_login' => date('j M, H:i')]);
 
-        $data['username'] = $username;
-        $data['last_login'] = date('j M, H:i');
-        $data['state'] = $state;
-
-        return view('home', $data);
+        return redirect('/home');
     }
 
     /**
@@ -68,12 +65,13 @@ class HomeController extends Controller
         //
     }
 
-    public function redirectTo($tujuan) {
+    public function redirectTo($tujuan)
+    {
         $tujuan = strtolower($tujuan);
 
-        if($tujuan === "register") {
+        if ($tujuan === "register") {
             return redirect()->route('auth.register.show');
-        } elseif($tujuan === "order") {
+        } elseif ($tujuan === "order") {
             return redirect()->away('https://shopee.co.id/');
         } else {
             return redirect()->route('home')->with('info', 'Selamat Datang!');

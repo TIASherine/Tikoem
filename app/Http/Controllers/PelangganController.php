@@ -11,8 +11,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $pageData['dataPelanggan'] = pelanggan::all();
-
+        $pageData['dataPelanggan'] = Pelanggan::all();
         return view('admin.pelanggan.index', $pageData);
     }
 
@@ -38,16 +37,11 @@ class PelangganController extends Controller
             'phone'      => ['required', 'numeric'],
         ]);
 
-        $data['first_name'] = $request->first_name;
-        $data['last_name']  = $request->last_name;
-        $data['birthday']   = $request->birthday;
-        $data['gender']     = $request->gender;
-        $data['email']      = $request->email;
-        $data['phone']      = $request->phone;
+        Pelanggan::create($request->only([
+            'first_name', 'last_name', 'birthday', 'gender', 'email', 'phone',
+        ]));
 
-        Pelanggan::create($data);
-
-        return redirect()->route('pelanggan.list')->with('success', 'Penambahan Data Berhasil!');
+        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -64,7 +58,6 @@ class PelangganController extends Controller
     public function edit(string $param1)
     {
         $pageData['dataPelanggan'] = Pelanggan::findOrFail($param1);
-
         return view('admin.pelanggan.edit', $pageData);
     }
 
@@ -95,7 +88,7 @@ class PelangganController extends Controller
 
         $pelanggan->save();
 
-        return redirect()->route('pelanggan.list')->with('success', 'Perubahan Data Berhasil!');
+        return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil!');
     }
 
     /**
@@ -107,6 +100,6 @@ class PelangganController extends Controller
 
         $pelanggan->delete();
 
-        return redirect()->route('pelanggan.list')->with('success', 'Penghapusan Data Berhasil!');
+        return redirect()->route('pelanggan.index')->with('success', 'Penghapusan Data Berhasil!');
     }
-};
+}

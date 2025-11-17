@@ -11,7 +11,7 @@ use App\Http\Controllers\PelangganController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login-form');
 });
 
 Route::get('/dashboard', function () {
@@ -24,7 +24,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    $state = session('state');
+    $name = session('name');
+    $last_login = session('last_login');
+
+    if ($state === 'Karyawan') {
+        return view('admin.karyawan.home', compact('name', 'last_login', 'state'));
+    }
+    else if ($state === 'Admin') {
+        return view('admin.admin-page', compact('name', 'last_login', 'state'));
+    } else {
+        return view('admin.pelanggan.home', compact('name', 'last_login', 'state'));
+    }
+}) ->name('home');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 
@@ -53,7 +66,7 @@ Route::get('/redirect/{parameter}', [HomeController::class, 'redirectTo'])->name
 Route::get('/go/{tujuan}', [HomeController::class, 'redirectTo'])->name('go');
 
 Route::controller(PelangganController::class)->prefix('pelanggan')->name('pelanggan.')->group(function () {
-    Route::get('', 'index')->name('list');
+    Route::get('', 'index')->name('index');
 
     Route::get('create', 'create')->name('create');
 
