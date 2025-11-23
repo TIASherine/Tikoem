@@ -195,7 +195,7 @@
                     <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Daftar Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Tim Kami</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/auth"> {{ $name }} </a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth"> {{ session('name') }} </a></li>
                 </ul>
             </div>
         </div>
@@ -203,8 +203,7 @@
 
     <section class="hero-section">
         <div class="container">
-            <h2> Selamat datang, {{ $name }}! </h4>
-                <p>Siap untuk hari penuh aroma kopi? Terakhir login {{ $last_login }} </p>
+            <h2> Selamat datang, {{ session('name') }}! </h4>
         </div>
     </section>
 
@@ -223,54 +222,27 @@
                         <hr class="my-4 text-muted">
 
                         <div class="accordion" id="accordionInfo">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false">
-                                        <i class="fas fa-info-circle me-2"></i>Tentang Tikoem
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionInfo">
-                                    <div class="accordion-body text-muted">
-                                        Tikoem adalah kedai kopi harian yang mengutamakan kenyamanan, kualitas biji kopi
-                                        lokal terbaik, dan suasana hangat untuk semua pelanggan setia kami.
-                                    </div>
-                                </div>
+                            <div class="mt-3">
+                                <h6 class="mb-2"><i class="fas fa-info-circle me-2"></i>Tentang Tikoem</h6>
+                                <p class="text-muted mb-0">
+                                    Tikoem adalah kedai kopi harian yang mengutamakan kenyamanan, kualitas biji kopi
+                                    lokal terbaik, dan suasana hangat untuk semua pelanggan setia kami.
+                                </p>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
-<div class="card h-100">
+                <div class="card h-100">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
                             <h5 class="card-title"><i class="fas fa-coffee me-2"></i>Inspirasi Harian</h5>
                             <p class="text-muted">Lihat semua racikan minuman dan camilan kami.</p>
                             <a href="#" class="btn btn-primary mt-3">Telusuri Menu <i
                                     class="fas fa-mug-hot ms-2"></i></a>
-                        </div>
-
-                        <hr class="my-4 text-muted">
-
-                        <div class="accordion" id="accordionInfo">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false">
-                                        <i class="fas fa-info-circle me-2"></i>Tentang Tikoem
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionInfo">
-                                    <div class="accordion-body text-muted">
-                                        Tikoem adalah kedai kopi harian yang mengutamakan kenyamanan, kualitas biji kopi
-                                        lokal terbaik, dan suasana hangat untuk semua pelanggan setia kami.
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

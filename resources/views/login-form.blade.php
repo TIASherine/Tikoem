@@ -147,7 +147,7 @@
                         <form action="{{ route('auth.login.post') }}" method="POST">
                             @csrf
                             <div class="mb-4">
-                                <label for="name" class="form-label">Nama Pengguna</label>
+                                <label for="name" class="form-label">Nama Anda</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     placeholder="Masukkan nama pengguna Anda" required value="{{ old('name') }}">
                             </div>

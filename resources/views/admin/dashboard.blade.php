@@ -116,7 +116,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('pelanggan.list') }}" class="nav-link">
+                    <a href="{{ route('pelanggan.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -823,7 +823,7 @@
                     <div class="card shadow border-0 text-center p-0">
                         <div class="profile-cover rounded-top"
                             data-background="{{ asset('assets-admin/img/profile-cover.jpg') }}"
-                            style="background: url(&quot;{{ asset('assets-admin/img/profile-cover.jpg') }}&quot;);">
+                            style="background-image: url('{{ asset('assets-admin/img/profile-cover.jpg') }}');">
                         </div>
                         <div class="card-body pb-5">
                             <img src="{{ asset('assets-admin/img/team/profile-picture-1.jpg') }}"

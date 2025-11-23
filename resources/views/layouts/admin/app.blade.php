@@ -57,13 +57,10 @@
     <!-- Sidebar End -->
 
     <main class="content">
+        
         <!-- Header Start -->
         @include('layouts.admin.header');
         <!-- Header End -->
-
-        <!-- Main Content Start -->
-        @yield('content');
-        <!-- Main Content End -->
 
         <!-- Footer Start -->
         @include('layouts.admin.footer');

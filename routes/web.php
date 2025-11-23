@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
 
@@ -25,23 +25,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/home', function () {
-    $state = session('state');
+    $role = session('role');
     $name = session('name');
-    $last_login = session('last_login');
 
-    if ($state === 'Karyawan') {
-        return view('admin.karyawan.home', compact('name', 'last_login', 'state'));
+    if ($role === 'Karyawan') {
+        return view('admin.karyawan.home', compact('name', 'role'));
     }
-    else if ($state === 'Admin') {
-        return view('admin.admin-page', compact('name', 'last_login', 'state'));
+    else if ($role === 'Owner') {
+        return view('admin.admin-page', compact('name', 'role'));
     } else {
-        return view('admin.pelanggan.home', compact('name', 'last_login', 'state'));
+        return view('admin.pelanggan.home', compact('name', 'role'));
     }
 }) ->name('home');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-
-Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
 
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
     Route::get('', 'index')->name('login.show');
@@ -52,9 +49,7 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
 
     Route::post('signup', 'signup')->name('signup.post');
 
-    Route::get('register', 'showRegisterForm')->name('register.show');
-
-    Route::post('register', 'register')->name('register.post');
+    Route::get('success', 'signupSuccess')->name('signup.success');
 
     Route::get('logout', 'logout')->name('logout');
 });
@@ -79,7 +74,7 @@ Route::controller(PelangganController::class)->prefix('pelanggan')->name('pelang
     Route::get('destroy/{param1}', 'destroy')->name('destroy');
 });
 
-Route::controller(CustomerController::class)->prefix('customer')->name('customer.')->group(function () {
+Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
     Route::get('', 'index')->name('list');
 
     Route::get('create', 'create')->name('create');

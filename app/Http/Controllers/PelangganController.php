@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class PelangganController extends Controller
@@ -11,8 +11,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $pageData['dataPelanggan'] = Pelanggan::all();
-        return view('admin.pelanggan.index', $pageData);
+        $pageData['dataPelanggan'] = Users::all();
+        return view('admin.pelanggan.home', $pageData);
     }
 
     /**
@@ -29,19 +29,17 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => ['required'],
-            'last_name'  => ['required'],
-            'birthday'   => ['required', 'date'],
-            'gender'     => ['required', 'in:Male,Female'],
+            'name' => ['required'],
             'email'      => ['required', 'email'],
-            'phone'      => ['required', 'numeric'],
+            'password'      => ['required'],
+            'role'     => ['required'], 
         ]);
 
-        Pelanggan::create($request->only([
-            'first_name', 'last_name', 'birthday', 'gender', 'email', 'phone',
+        Users::create($request->only([
+            'name', 'email', 'password', 'role'
         ]));
 
-        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
+        return redirect()->route('pelanggan.home')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**
@@ -57,7 +55,7 @@ class PelangganController extends Controller
      */
     public function edit(string $param1)
     {
-        $pageData['dataPelanggan'] = Pelanggan::findOrFail($param1);
+        $pageData['dataPelanggan'] = Users::findOrFail($param1);
         return view('admin.pelanggan.edit', $pageData);
     }
 
@@ -68,23 +66,19 @@ class PelangganController extends Controller
     {
         $request->validate([
             'pelanggan_id' => ['required'],
-            'first_name'   => ['required'],
-            'last_name'    => ['required'],
-            'birthday'     => ['required', 'date'],
-            'gender'       => ['required', 'in:Male,Female'],
+            'name'   => ['required'],
             'email'        => ['required', 'email'],
-            'phone'        => ['required', 'numeric'],
+            'password'        => ['required'],
+            'role'   => ['required'],
         ]);
 
         $pelanggan_id = $request->pelanggan_id;
-        $pelanggan    = Pelanggan::findOrFail($pelanggan_id);
+        $pelanggan    = Users::findOrFail($pelanggan_id);
 
-        $pelanggan->first_name = $request->first_name;
-        $pelanggan->last_name  = $request->last_name;
-        $pelanggan->birthday   = $request->birthday;
-        $pelanggan->gender     = $request->gender;
+        $pelanggan->name = $request->name;
         $pelanggan->email      = $request->email;
-        $pelanggan->phone      = $request->phone;
+        $pelanggan->password      = $request->password;
+        $pelanggan->role      = $request->role ?? 'Pelanggan';
 
         $pelanggan->save();
 
@@ -96,7 +90,7 @@ class PelangganController extends Controller
      */
     public function destroy(string $param1)
     {
-        $pelanggan = Pelanggan::findOrFail($param1);
+        $pelanggan = Users::findOrFail($param1);
 
         $pelanggan->delete();
 

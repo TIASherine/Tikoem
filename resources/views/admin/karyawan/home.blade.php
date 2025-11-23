@@ -196,7 +196,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Daftar Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Pesanan Baru</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Tim Kami</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/auth"> {{ $state }} </a></li>
+                    <li class="nav-item"><a class="nav-link" href="/auth"> {{ session('role') }} </a></li>
                 </ul>
             </div>
         </div>
@@ -204,8 +204,7 @@
 
     <section class="hero-section">
         <div class="container">
-            <h2> Selamat datang, {{ $username }}! </h4>
-                <p>Siap untuk hari penuh aroma kopi? Terakhir login {{ $last_login }} </p>
+            <h2> Selamat datang, {{ session('name') }}! </h4>
         </div>
     </section>
 

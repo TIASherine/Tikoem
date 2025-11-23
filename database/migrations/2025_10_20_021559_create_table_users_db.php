@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pelanggan', function (Blueprint $table) {
-            $table->increments('pelanggan_id');
-            $table->string('first_name', 100);
-            $table->string('last_name', 100);
-            $table->date('birthday')->nullable();
-            $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
+        Schema::create('users_db', function (Blueprint $table) {
+            $table->increments('user_id');
+            $table->string('name', 100);
             $table->string('email')->unique();
-            $table->string('phone', 20)->nullable();
+            $table->string('password');
+            $table->string('role')->default('Pelanggan');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelanggan');
+        Schema::dropIfExists('users_db');
     }
 };

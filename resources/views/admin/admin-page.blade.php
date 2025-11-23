@@ -65,7 +65,6 @@
         .hero-section h1 {
             font-weight: 700;
             font-size: 2.8rem;
-            npm run dev
         }
 
         .card {
@@ -197,13 +196,28 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h2>Selamat datang, Admin!</h2>
-            <p>Siap untuk mengelola kedai? Terakhir login pada 01 Okt 2024</p>
+            <h2>Selamat datang, {{ session('name') }} !</h2>
         </div>
     </section>
 
     <!-- Main Content -->
     <section id="content" class="container py-5">
+        <div class="d-flex align-items-center">
+            <!-- Search form -->
+            <form class="navbar-search form-inline" id="navbar-search-main">
+                <div class="input-group input-group-merge search-bar" style="border: 1px solid black;">
+                    <span class="input-group-text" id="topbar-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" id="topbarInputIconLeft"
+                        placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
+                </div>
+            </form>
+            <!-- / Search form -->
+        </div>
+
+        <br>
+
         <div class="row g-4">
             <!-- Pemasukan & Pengeluaran Card -->
             <div class="col-lg-8 d-flex align-items-stretch">

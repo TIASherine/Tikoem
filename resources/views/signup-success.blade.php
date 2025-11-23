@@ -162,7 +162,7 @@
                 <i class="fas fa-user me-2"></i> Nama Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ $name }}
+                {{ session('name') }}
             </p>
         </div>
 
@@ -172,7 +172,7 @@
                 <i class="fas fa-user me-2"></i> Email Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ $email }}
+                {{ session('email') }}
             </p>
         </div>
 
@@ -182,7 +182,17 @@
                 <i class="fas fa-key me-2"></i> Kata Sandi Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ $password }}
+                {{ session('password') }}
+            </p>
+        </div>
+
+        <!-- Role -->
+        <div class="detail-item p-3 mb-4 rounded bg-light">
+            <p class="text-secondary mb-1">
+                <i class="fas fa-key me-2"></i> Role Anda
+            </p>
+            <p class="h5 font-weight-bold" style="color: var(--dark-color);">
+                {{ session('role') }}
             </p>
         </div>
 

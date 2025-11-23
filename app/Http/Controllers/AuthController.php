@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -73,41 +75,68 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name'           => 'required|string|max:100',
+            'name'     => 'required|string|max:100',
             'password' => 'required|string|min:3|max:100',
         ]);
-        $users = session()->get('users', []);
 
-        if (isset($users[$request->name]) && $users[$request->name]['password'] === $request->password) {
-            session(['username' => $request->name]);
-            session(['state' => $request->name]);
-            return redirect('/home')->with('status', 'success');
-        } else {
+        $user = Users::where('name', $request->name)->first();
+
+        if (!$user || $user->password !== $request->password) {
             return Redirect::back()->with('status', 'error')->withInput();
         }
+
+        session([
+            'name' => $user->name,
+            'role'     => $user->role,
+            'logged_in' => true
+        ]);
+
+        return redirect('/home')->with('status', 'success');
     }
 
     public function signup(Request $request)
     {
         $request->validate([
-            'name'           => 'required|string|max:100',
-            'password' => 'required|string|min:3|max:100',
+            'name'            => 'required|string|max:100',
             'email'           => 'required|email',
+            'password'        => 'required|string|min:3|max:100',
             'confirmPassword' => 'required|same:password',
-        ], [
-            'confirmPassword.same' => 'Konfirmasi Password tidak sesuai.',
         ]);
 
-        $users                   = session()->get('users', []);
-        $users[$request['name']] = [
-            'email'    => $request['email'],
-            'password' => $request['password'],
-        ];
-        session()->put('users', $users);
-        session(['name' => $request->name]);
-        session(['state' => $request->name]);
+        $email = $request->email;
 
-        return view('signup-success', $request);
+        $role = match (true) {
+            str_ends_with($email, '@staff.pcr.tikoem.id') => 'Karyawan',
+            str_ends_with($email, '@owner.pcr.tikoem.id') => 'Owner',
+            default => 'Pelanggan',
+        };
+
+        $user = Users::create([
+            'name'     => $request->name,
+            'email'    => $email,
+            'password' => $request->password,
+            'role'     => $role
+        ]);
+
+        session([
+            'name' => $user->name,
+            'password' => $user->password,
+            'email' => $user->email,
+            'role'     => $user->role,
+            'logged_in' => true
+        ]);
+
+        return redirect()->route('auth.signup.success');
+    }
+
+    public function showSignupForm()
+    {
+        return view('signup-form');
+    }
+
+    public function signupSuccess()
+    {
+        return view('signup-success');
     }
 
     public function logout(Request $request)
@@ -115,10 +144,5 @@ class AuthController extends Controller
         $request->session()->flush();
 
         return redirect('/');
-    }
-
-    public function showSignupForm()
-    {
-        return view('signup-form');
     }
 }
