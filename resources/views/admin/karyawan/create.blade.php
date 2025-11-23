@@ -21,7 +21,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>ProjectKel1 - Pelanggan </title>
+    <title> Admin Panel - Tikoem </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
     <meta name="author" content="Themesberg">
@@ -116,7 +116,7 @@
                 </li>
 
                 <li class="nav-item active ">
-                    <a href="{{ route('pelanggan.list') }}" class="nav-link">
+                    <a href="{{ route('karyawan.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@
                                 <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                             </svg>
                         </span>
-                        <span class="sidebar-text">Pelanggan</span>
+                        <span class="sidebar-text"> Karyawan </span>
                     </a>
                 </li>
 
@@ -375,23 +375,19 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('pelanggan.list') }}"> Pelanggan </a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('karyawan.index') }}"> Karyawan </a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tambah Data</li>
                     </ol>
                 </nav>
-                <h2 class="h4"> Tambah Data Pelanggan </h2>
-                <p class="mb-0"> Form Tambah Data Pelanggan Baru </p>
+                <h2 class="h4"> Tambah Data Karyawan </h2>
+                <p class="mb-0"> Form Tambah Data Karyawan Baru </p>
             </div>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <a href="{{ route('pelanggan.create') }}"
+                <a href="{{ route('karyawan.create') }}"
                     class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
                     Kembali
                 </a>
-                <div class="btn-group ms-2 ms-lg-3">
-                    <button type="button" class="btn btn-sm btn-outline-gray-600">Share</button>
-                    <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-                </div>
             </div>
         </div>
 
@@ -413,47 +409,15 @@
                     </div>
                 @endif
 
-                <form method="POST" action="/pelanggan/store">
+                <form method="POST" action="/karyawan/store">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div>
                                 <label for="first_name">First Name</label>
-                                <input class="form-control" id="first_name" name="first_name" type="text"
-                                    placeholder="Enter your first name" required>
+                                <input class="form-control" id="name" name="name" type="text"
+                                    placeholder="Nama Lengkap" required>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div>
-                                <label for="last_name">Last Name</label>
-                                <input class="form-control" id="last_name" name="last_name" type="text"
-                                    placeholder="Also your last name" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-md-6 mb-3">
-                            <label for="birthday">Birthday</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                                <input data-datepicker="" class="form-control" id="birthday" name="birthday"
-                                    type="text" placeholder="dd/mm/yyyy" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="gender">Gender</label>
-                            <select class="form-select mb-0" id="gender" name="gender" aria-label="Gender select example">
-                                <option selected> Gender </option>
-                                <option value="Female"> Female </option>
-                                <option value="Male"> Male </option>
-                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -466,9 +430,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input class="form-control" id="phone" name="phone" type="number"
-                                    placeholder="+12-345 678 910" required>
+                                <label for="role"> Role </label>
+                                <h3> {{ session('role')}} </h3>
                             </div>
                         </div>
                     </div>

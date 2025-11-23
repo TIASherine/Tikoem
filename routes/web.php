@@ -4,16 +4,25 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PelangganController;
 
 use Illuminate\Support\Facades\Route;
 
+//One line routes
 Route::get('/', function () {
     return view('login-form');
 });
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/redirect/{parameter}', [HomeController::class, 'redirectTo'])->name('redirect.to');
+
+Route::get('/go/{tujuan}', [HomeController::class, 'redirectTo'])->name('go');
+
+
+//Laravel
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -24,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Where user land based on role
 Route::get('/home', function () {
     $role = session('role');
     $name = session('name');
@@ -38,8 +48,7 @@ Route::get('/home', function () {
     }
 }) ->name('home');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-
+//Auth
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
     Route::get('', 'index')->name('login.show');
 
@@ -54,12 +63,16 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     Route::get('logout', 'logout')->name('logout');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+//Admin
+Route::controller(AdminController::class)->prefix('admin')->name('admin.')->group(function () {
+    Route::get('', 'index')->name('index');
 
-Route::get('/redirect/{parameter}', [HomeController::class, 'redirectTo'])->name('redirect.to');
+    Route::get('tim', fn() => redirect()->route('karyawan.index'))->name('tim');
 
-Route::get('/go/{tujuan}', [HomeController::class, 'redirectTo'])->name('go');
+    Route::get('logout', 'logout')->name('logout');
+});
 
+//Pelanggan
 Route::controller(PelangganController::class)->prefix('pelanggan')->name('pelanggan.')->group(function () {
     Route::get('', 'index')->name('index');
 
@@ -74,13 +87,19 @@ Route::controller(PelangganController::class)->prefix('pelanggan')->name('pelang
     Route::get('destroy/{param1}', 'destroy')->name('destroy');
 });
 
-Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
-    Route::get('', 'index')->name('list');
+//Karyawan
+Route::controller(KaryawanController::class)->prefix('karyawan')->name('karyawan.')->group(function () {
+    Route::get('', 'index')->name('index');
 
     Route::get('create', 'create')->name('create');
 
     Route::post('store', 'store')->name('store');
-});
 
+    Route::get('edit/{param1}', 'edit')->name('edit');
+
+    Route::post('update', 'update')->name('update');
+
+    Route::get('destroy/{param1}', 'destroy')->name('destroy');
+});
 
 require __DIR__.'/auth.php';

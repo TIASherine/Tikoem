@@ -177,7 +177,6 @@
             color: #c7c7c7;
         }
     </style>
-
 </head>
 
 <body>

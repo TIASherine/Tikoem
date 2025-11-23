@@ -65,14 +65,14 @@ class PelangganController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'pelanggan_id' => ['required'],
+            'user_id' => ['required'],
             'name'   => ['required'],
             'email'        => ['required', 'email'],
             'password'        => ['required'],
             'role'   => ['required'],
         ]);
 
-        $pelanggan_id = $request->pelanggan_id;
+        $pelanggan_id = $request->user_id;
         $pelanggan    = Users::findOrFail($pelanggan_id);
 
         $pelanggan->name = $request->name;

@@ -61,4 +61,9 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function showTim()
+    {
+        return view('karyawan.index');
+    }
 }
