@@ -2,7 +2,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PelangganController extends Controller
 {
@@ -28,16 +30,16 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required'],
             'email'      => ['required', 'email'],
             'password'      => ['required'],
-            'role'     => ['required'], 
+            'role'     => ['required'],
         ]);
 
-        Users::create($request->only([
-            'name', 'email', 'password', 'role'
-        ]));
+        $data['password'] = Hash::make($request->password);
+
+		Users::create($data);
 
         return redirect()->route('pelanggan.home')->with('success', 'Penambahan Data Berhasil!');
     }

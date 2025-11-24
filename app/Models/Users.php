@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as CheckAuth;
+use Illuminate\Notifications\Notifiable;
 
-class Users extends Model
+class Users extends CheckAuth
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $primaryKey = 'user_id';
     protected $table = 'users_db';

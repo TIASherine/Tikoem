@@ -30,11 +30,12 @@
             </li>
         </ul>
         <ul class="nav flex-column mt-auto">
-            <li class="nav-item mb-2">
-                <a href="/auth/logout" class="nav-link text-dark fw-semibold">
+            <form action="{{ route('auth.logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="nav-link text-dark fw-semibold border-0 bg-transparent">
                     <i class="fas fa-sign-out me-2"></i> Logout
-                </a>
-            </li>
+                </button>
+            </form>
         </ul>
     </div>
 </div>

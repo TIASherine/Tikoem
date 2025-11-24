@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KaryawanController extends Controller
 {
@@ -30,14 +30,14 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
-            'email'      => ['required', 'email'],
-            'password'      => ['required'],
-            'role'     => ['required'], 
+            'name'     => ['required'],
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
+            'role'     => ['required'],
         ]);
 
         Users::create($request->only([
-            'name', 'email', 'password', 'role'
+            'name', 'email', 'password', 'role',
         ]));
 
         return redirect()->route('karyawan.index')->with('success', 'Penambahan Data Berhasil!');
@@ -67,15 +67,15 @@ class KaryawanController extends Controller
     {
         $request->validate([
             'user_id' => ['required'],
-            'name'   => ['required'],
-            'email'        => ['required', 'email'],
+            'name'    => ['required'],
+            'email'   => ['required', 'email'],
         ]);
 
         $karyawan_id = $request->user_id;
         $karyawan    = Users::findOrFail($karyawan_id);
 
-        $karyawan->name = $request->name;
-        $karyawan->email      = $request->email;
+        $karyawan->name  = $request->name;
+        $karyawan->email = $request->email;
 
         $karyawan->save();
 
