@@ -39,16 +39,13 @@ Route::get('/home', function () {
 //Auth
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
     Route::get('', 'index')->name('login.show');
-
     Route::post('login', 'login')->name('login.post');
-
     Route::get('signup', 'showSignupForm')->name('signup.show');
-
     Route::post('signup', 'signup')->name('signup.post');
-
     Route::get('success', 'signupSuccess')->name('signup.success');
-
     Route::post('logout', 'logout')->name('logout');
+    Route::get('redirect-google', 'redirectToGoogle')->name('redirect.google');
+    Route::get('oauthcallback', 'handleGoogleCallback');
 });
 
 //Admin

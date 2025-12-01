@@ -166,7 +166,8 @@
 
                     <div class="card-footer">
                         <p class="small-text"> Belum punya akun? <a href="/auth/signup"> Daftar sekarang</a></p>
-                        <p class="small-text mt-2"><a href="#">Lupa Kata Sandi?</a></p>
+
+                            <a href="{{ route('auth.redirect.google') }}" class="btn btn-secondary w-45"> Login dengan Google </a>
                     </div>
                 </div>
             </div>
