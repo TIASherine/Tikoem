@@ -17,7 +17,6 @@
 </head>
 
 <body>
-    @include('layouts.admin.navbar')
     @include('layouts.admin.header')
 
     <main id="main-content">

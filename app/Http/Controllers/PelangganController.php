@@ -98,4 +98,9 @@ class PelangganController extends Controller
 
         return redirect()->route('pelanggan.index')->with('success', 'Penghapusan Data Berhasil!');
     }
+
+    public function list() {
+        $pageData['dataPelanggan'] = Users::all();
+        return view('admin.pelanggan.index', $pageData);
+    }
 }

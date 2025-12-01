@@ -108,7 +108,7 @@ class AuthController extends Controller
 
         $role = match (true) {
             str_ends_with($email, '@staff.pcr.tikoem.id') => 'Karyawan',
-            str_ends_with($email, '@owner.pcr.tikoem.id') => 'Owner',
+            str_ends_with($email, '@admin.pcr.tikoem.id') => 'Admin',
             default                                       => 'Pelanggan',
         };
 

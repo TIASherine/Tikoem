@@ -1,3 +1,23 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-coffee fa-2x"></i>
+            <div class="logo-text">
+                Tikoem
+                <small class="text-muted d-block" style="font-size: 0.65rem; font-weight: 500;"> Kafe GSG </small>
+            </div>
+        </a>
+
+        <!-- Toggle Button -->
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+            <i class="fas fa-bars"></i> Menu
+        </button>
+
+    </div>
+</nav>
+
 <!-- Offcanvas Sidebar -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
     <div class="offcanvas-header">
@@ -7,24 +27,24 @@
     <div class="offcanvas-body p-3 d-flex flex-column" style="height: 100%;">
         <ul class="nav flex-column mb-auto">
             <li class="nav-item mb-2">
-                <a href="{{ route('admin.index') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-user me-2"></i> Dashboard
-                </a>
-            </li>
-
-            <li class="nav-item mb-2">
                 <a href="#" class="nav-link text-dark fw-semibold">
                     <i class="fas fa-user me-2"></i> Profil
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="{{ route('admin.tim') }}" class="nav-link text-dark fw-semibold">
+                <a href="{{ route('admin.index') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-user me-2"></i> Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="{{ route('karyawan.index') }}" class="nav-link text-dark fw-semibold">
                     <i class="fas fa-users me-2"></i> Daftar Karyawan
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-dark fw-semibold">
+                <a href="{{ route('product.index') }}" class="nav-link text-dark fw-semibold">
                     <i class="fas fa-box-open me-2"></i> Produk
                 </a>
             </li>

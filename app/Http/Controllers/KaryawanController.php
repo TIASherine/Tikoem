@@ -3,16 +3,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class KaryawanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pageData['dataKaryawan'] = Users::where('role', 'Karyawan')->get();
+        $filterableColumns = ['role'];
+
+        $pageData['dataKaryawan'] = Users::filter($request, $filterableColumns)->simplePaginate(2)->withQueryString();
         return view('admin.karyawan.index', $pageData);
     }
 
