@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
@@ -10,10 +11,19 @@ class KaryawanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pageData['dataKaryawan'] = Users::where('role', 'Karyawan')->get();
-        return view('admin.karyawan.index', $pageData);
+        $pesananBaru = Order::where('status', 'pending')->count();
+
+        $pendapatanHarian = Order::where('status', 'Selesai')
+            ->whereDate('created_at', today())
+            ->sum('total_price');
+
+        $totalOrders = Order::count();
+        $dataOrder = Order::latest()->simplePaginate(10)->withQueryString();
+        $startNumber = $totalOrders - ($dataOrder->currentPage() - 1) * $dataOrder->perPage();
+
+        return view('admin.karyawan.home', compact('pesananBaru', 'pendapatanHarian', 'dataOrder', 'startNumber'));
     }
 
     /**
@@ -30,14 +40,17 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
-            'email'      => ['required', 'email'],
-            'password'      => ['required'],
-            'role'     => ['required'], 
+            'name'     => ['required'],
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
+            'role'     => ['required'],
         ]);
 
         Users::create($request->only([
-            'name', 'email', 'password', 'role'
+            'name',
+            'email',
+            'password',
+            'role',
         ]));
 
         return redirect()->route('karyawan.index')->with('success', 'Penambahan Data Berhasil!');
@@ -67,15 +80,15 @@ class KaryawanController extends Controller
     {
         $request->validate([
             'user_id' => ['required'],
-            'name'   => ['required'],
-            'email'        => ['required', 'email'],
+            'name'    => ['required'],
+            'email'   => ['required', 'email'],
         ]);
 
         $karyawan_id = $request->user_id;
         $karyawan    = Users::findOrFail($karyawan_id);
 
-        $karyawan->name = $request->name;
-        $karyawan->email      = $request->email;
+        $karyawan->name  = $request->name;
+        $karyawan->email = $request->email;
 
         $karyawan->save();
 
@@ -91,5 +104,30 @@ class KaryawanController extends Controller
         $karyawan->delete();
 
         return redirect()->route('karyawan.index')->with('success', 'Penghapusan Data Berhasil!');
+    }
+
+    public function dashboard()
+    {
+        $pesananBaru = Order::where('status', 'pending')->count();
+
+        $pendapatanHarian = Order::where('status', 'Selesai')
+            ->whereDate('created_at', today())
+            ->sum('total_price');
+
+        return view('admin.karyawan.dashboard', compact('pesananBaru', 'pendapatanHarian'));
+    }
+
+    public function apiDashboard()
+    {
+        $pesananBaru = Order::where('status', 'pending')->count();
+
+        $pendapatanHarian = Order::where('status', 'Selesai')
+            ->whereDate('created_at', today())
+            ->sum('total_price');
+
+        return response()->json([
+            'pesananBaru' => $pesananBaru,
+            'pendapatanHarian' => $pendapatanHarian
+        ]);
     }
 }

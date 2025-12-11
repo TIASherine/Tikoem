@@ -34,7 +34,7 @@
         }
 
         .navbar {
-            background-color: white !important;
+            background-color: #927a58ff !important;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
         }
 
@@ -121,10 +121,10 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <i class="fas fa-coffee fa-2x" style="color: var(--primary-color);"></i>
+                <img src="{{ asset('assets-admin/img/icons/Logo.png') }}" height="50px" width="50px" alt="Logo">
                 <div class="logo-text ms-2">
                     Tikoem
                     <small class="text-muted" style="font-size: 0.65rem; display: block; font-weight: 500;">
@@ -162,7 +162,7 @@
                 <i class="fas fa-user me-2"></i> Nama Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ session('name') }}
+                {{ Auth::user()->name }}
             </p>
         </div>
 
@@ -172,17 +172,7 @@
                 <i class="fas fa-user me-2"></i> Email Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ session('email') }}
-            </p>
-        </div>
-
-        <!-- Password -->
-        <div class="detail-item p-3 mb-4 rounded bg-light">
-            <p class="text-secondary mb-1">
-                <i class="fas fa-key me-2"></i> Kata Sandi Anda
-            </p>
-            <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ session('password') }}
+                {{ Auth::user()->email }}
             </p>
         </div>
 
@@ -192,7 +182,7 @@
                 <i class="fas fa-key me-2"></i> Role Anda
             </p>
             <p class="h5 font-weight-bold" style="color: var(--dark-color);">
-                {{ session('role') }}
+                {{ Auth::user()->role }}
             </p>
         </div>
 

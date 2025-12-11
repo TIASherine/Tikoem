@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
@@ -14,7 +16,9 @@ class AuthController extends Controller
 
     public function index()
     {
-        return view('login-form');
+        if (! Auth::check()) {
+            return view('login-form');
+        }
     }
 
     /**
@@ -65,41 +69,31 @@ class AuthController extends Controller
         //
     }
 
-    public function old(Request $request)
-    {
-        $pageData['name']     = $request->name;
-        $pageData['email']    = $request->email;
-        $pageData['password'] = '';
-    }
-
     public function login(Request $request)
     {
-        $request->validate([
+        $user = $request->validate([
             'name'     => 'required|string|max:100',
             'password' => 'required|string|min:3|max:100',
         ]);
 
-        $user = Users::where('name', $request->name)->first();
-
-        if (!$user || $user->password !== $request->password) {
-            return Redirect::back()->with('status', 'error')->withInput();
+        if (!Auth::attempt($user)) {
+            return back()->with('status', 'error')->withInput();
         }
 
-        session([
-            'name' => $user->name,
-            'role'     => $user->role,
-            'logged_in' => true
-        ]);
+        $request->session()->regenerate();
 
-        return redirect('/home')->with('status', 'success');
+        return redirect()->route('home')->with('status', 'success');
     }
 
     public function signup(Request $request)
     {
+        $data = $request->validate([
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|email',
+            'password' => 'required|string|min:3|max:100',
+        ]);
+
         $request->validate([
-            'name'            => 'required|string|max:100',
-            'email'           => 'required|email',
-            'password'        => 'required|string|min:3|max:100',
             'confirmPassword' => 'required|same:password',
         ]);
 
@@ -107,24 +101,18 @@ class AuthController extends Controller
 
         $role = match (true) {
             str_ends_with($email, '@staff.pcr.tikoem.id') => 'Karyawan',
-            str_ends_with($email, '@owner.pcr.tikoem.id') => 'Owner',
-            default => 'Pelanggan',
+            str_ends_with($email, '@admin.pcr.tikoem.id') => 'Admin',
+            default                                       => 'Pelanggan',
         };
 
-        $user = Users::create([
-            'name'     => $request->name,
-            'email'    => $email,
-            'password' => $request->password,
-            'role'     => $role
-        ]);
+        $data['role'] = $role;
 
-        session([
-            'name' => $user->name,
-            'password' => $user->password,
-            'email' => $user->email,
-            'role'     => $user->role,
-            'logged_in' => true
-        ]);
+        $data['password'] = Hash::make($data['password']);
+
+        $user = Users::create($data);
+
+        Auth::login($user);
+        $request->session()->regenerate();
 
         return redirect()->route('auth.signup.success');
     }
@@ -141,7 +129,9 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->flush();
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect('/');
     }

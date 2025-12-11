@@ -1,24 +1,32 @@
 <?php
+
 namespace App\Models;
 
+use App\Models\Users;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as CheckAuth;
-use Illuminate\Notifications\Notifiable;
 
-class Users extends CheckAuth
+class Order extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
-    protected $primaryKey = 'user_id';
-    protected $table      = 'users_db';
+    protected $primaryKey = 'order_id';
+    protected $table = 'orders';
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
+        'user_id',
+        'total_price',
+        'status',
+        'payment_method',
+        'qris_img'
     ];
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class, 'order_id');
+    }
+
 
     public function scopeFilter(Builder $query, $request, array $filterableColumns): Builder
     {
@@ -33,5 +41,10 @@ class Users extends CheckAuth
         }
 
         return $query;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Users::class, 'user_id', 'user_id');
     }
 }

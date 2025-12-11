@@ -72,9 +72,9 @@
 
 <body>
     @if (session('info'))
-        <div class="alert alert-info">
-            {{ session('info') }}
-        </div>
+    <div class="alert alert-info">
+        {{ session('info') }}
+    </div>
     @endif
 
     <div class="signup-card">
@@ -85,13 +85,13 @@
         <br>
 
         @if ($errors->any())
-            <div class="alert alert-danger p-3 mb-4 rounded-lg">
-                <ul class="list-disc ml-5 text-sm">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger p-3 mb-4 rounded-lg">
+            <ul class="list-disc ml-5 text-sm">
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
         <form action="/auth/signup" method="POST">
@@ -132,7 +132,11 @@
             <button type="submit" class="btn btn-primary w-full text-white font-semibold py-3 rounded-lg text-lg">
                 <i class="fas fa-coffee mr-2"></i>Daftar Sekarang
             </button>
+
         </form>
+
+        <br>
+
 </body>
 
 </html>

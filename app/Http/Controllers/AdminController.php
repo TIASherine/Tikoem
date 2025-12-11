@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -62,8 +63,11 @@ class AdminController extends Controller
         //
     }
 
-    public function showTim()
+    public function showListK(Request $request)
     {
-        return view('karyawan.index');
+        $filterableColumns = ['role'];
+
+        $pageData['dataKaryawan'] = Users::filter($request, $filterableColumns)->simplePaginate(10)->withQueryString();
+        return view('admin.karyawan.index', $pageData);
     }
 }

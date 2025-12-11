@@ -27,25 +27,26 @@
     <div class="offcanvas-body p-3 d-flex flex-column" style="height: 100%;">
         <ul class="nav flex-column mb-auto">
             <li class="nav-item mb-2">
+                <a href="{{ route('karyawan.dashboard') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-user me-2"></i> Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
                 <a href="#" class="nav-link text-dark fw-semibold">
                     <i class="fas fa-user me-2"></i> Profil
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="{{ route('admin.index') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-user me-2"></i> Dashboard
+                <a href="{{ route('product.index') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-box-open me-2"></i> Produk
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="{{ route('admin.list') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-users me-2"></i> Daftar Karyawan
-                </a>
-            </li>
-            <li class="nav-item mb-2">
-                <a href="{{ route('product.index') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-box-open me-2"></i> Daftar Produk
+                <a href="{{ route('karyawan.index') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-clipboard me-2"></i> Pesanan
                 </a>
             </li>
         </ul>

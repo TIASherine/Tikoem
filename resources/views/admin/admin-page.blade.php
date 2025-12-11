@@ -1,12 +1,37 @@
+@php
+use App\Models\Users;
+$totalKaryawan = Users::where('role', 'Karyawan')->count();
+@endphp
+
 @extends('layouts.admin.app')
 
 @section('content')
 
+<style>
+    .hero-section {
+        background-image: linear-gradient(rgba(123, 75, 51, 0.50), rgba(123, 75, 51, 0.50)),
+            url('https://i.pinimg.com/1200x/37/38/95/3738952fb99eefececb10cad655c6009.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    .hero-section h1 {
+        font-weight: 700;
+        font-size: 2.8rem;
+    }
+</style>
 <!-- Main Content -->
- 
-<header class="container pt-4 pb-3">
-    <h1 class="h2">Selamat datang, {{ session('name') }} !</h1>
-</header>
+
+<section class="hero-section">
+    <div class="container">
+        <h2> Halo Admin, {{ Auth::user()->name }}! </h4>
+    </div>
+</section>
 
 <div id="dashboard-content" class="container py-4">
     <div class="row g-4">
@@ -17,64 +42,62 @@
                     <header class="d-flex align-items-center justify-content-between mb-3">
                         <h2 class="card-title h5 fw-semibold">Pemasukan & Pengeluaran</h2>
                     </header>
-                    <canvas id="earning"></canvas>
+                    <canvas id="earningMonthly"></canvas>
+                    <canvas id="earningWeekly"></canvas>
+
                 </div>
             </section>
         </div>
 
-        <div class="col-lg-4 d-flex align-items-stretch">
+        <!-- TOTAL KARYAWAN CARD -->
+        <div class="col-md-4 h-40">
+            <div class="card shadow-sm border-0 p-3" style="border-left: 5px solid #0d6efd;">
+                <div>
+                    <h6 class="text-muted mb-1">Total Karyawan Terdaftar</h6>
+                    <h3 class="fw-bold">{{ $totalKaryawan }}</h3>
+                </div>
+            </div>
 
-            <!-- Aktivitas Terbaru Card -->
-            <div class="col-lg-8 d-flex align-items-stretch">
-                <div class="card-body">
-                    <h5 class="card-title mb-3 fw-semibold"> Aktivitas Terbaru </h5>
-                    <ul class="timeline-widget mb-0 position-relative mb-n5"
-                        style="list-style: none; padding-left: 0;">
-                        <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
-                            <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">09:30
-                            </div>
-                            <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
-                                <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-2"
-                                    style="width: 12px; height: 12px; border-radius: 50%;"></span>
-                                <span class="timeline-badge-border d-block flex-shrink-0"
-                                    style="width: 2px; background-color: var(--primary-color); flex-grow: 1;"></span>
-                            </div>
-                            <div class="timeline-desc fs-6 text-dark mt-n1 flex-grow-1">Payment received from John
-                                Doe of $385.90
-                            </div>
-                        </li>
-                        <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
-                            <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">10:00
-                                am</div>
-                            <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
-                                <span class="timeline-badge border-2 border flex-shrink-0 my-2"
-                                    style="width: 12px; height: 12px; border-radius: 50%; border-color: var(--tertiary-color) !important;"></span>
-                                <span class="timeline-badge-border d-block flex-shrink-0"
-                                    style="width: 2px; background-color: var(--tertiary-color); flex-grow: 1;"></span>
-                            </div>
-                            <div class="timeline-desc fs-6 text-dark mt-n1 fw-semibold flex-grow-1">New sale
-                                recorded <a href="javascript:void(0)" class="d-block fw-normal"
-                                    style="color: var(--primary-color);">#ML-3467</a>
-                            </div>
-                        </li>
-                        <li class="timeline-item d-flex position-relative overflow-hidden mb-3">
-                            <div class="timeline-time text-dark flex-shrink-0 text-end" style="width: 60px;">12:00
-                                am</div>
-                            <div class="timeline-badge-wrap d-flex flex-column align-items-center mx-2">
-                                <span class="timeline-badge border-2 border border-success flex-shrink-0 my-2"
-                                    style="width: 12px; height: 12px; border-radius: 50%;"></span>
-                                <span class="timeline-badge-border d-block flex-shrink-0"
-                                    style="width: 2px; background-color: #28a745; flex-grow: 1;"></span>
-                            </div>
-                            <div class="timeline-desc fs-6 text-dark mt-n1 flex-grow-1">Payment was made of $64.95
-                                to Michael
-                            </div>
-                        </li>
-                        <!-- Add more timeline items as needed -->
-                    </ul>
+            <br>
+
+            <!-- COMMENT CARD -->
+            <div class="bg-white shadow-md rounded-xl p-4 border border-gray-200 h-30">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800"> Yenni </h3>
+                        <p class="text-sm text-gray-500"> Mahasiswa G-24 </p>
+                    </div>
+                </div>
+                <div class="mt-3 text-gray-700">
+                    <p> Sistem layanan ini sangat membantu, malas antri soalnyaa.</p>
+                </div>
+                <div class="mt-4 text-sm text-gray-500">
+                    <p>🕒 2 hari yang lalu</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="bg-white shadow-md rounded-xl p-4 border border-gray-200 h-30">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800"> Michael </h3>
+                        <p class="text-sm text-gray-500"> AIL SI </p>
+                    </div>
+                </div>
+                <div class="mt-3 text-gray-700">
+                    <p> Jelas mempermudah untuk beli makan.</p>
+                </div>
+                <div class="mt-4 text-sm text-gray-500">
+                    <p>🕒 1 hari yang lalu</p>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </div>
 

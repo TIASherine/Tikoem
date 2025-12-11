@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand">
             <img src="{{ asset('assets-admin/img/icons/Logo.png') }}" alt="Logo">
             <div class="logo-text">
                 Tikoem
@@ -33,22 +33,30 @@
             </li>
 
             <li class="nav-item mb-2">
-                <a href="{{ route('admin.index') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-user me-2"></i> Dashboard
+                <a href="{{ route('product.list') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-box-open me-2"></i> Produk
                 </a>
             </li>
 
             <li class="nav-item mb-2">
-                <a href="{{ route('admin.list') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-users me-2"></i> Daftar Karyawan
+                <a href="{{ route('cart.index') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-shopping-basket me-2"></i> Keranjang
                 </a>
             </li>
+
             <li class="nav-item mb-2">
-                <a href="{{ route('product.index') }}" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-box-open me-2"></i> Daftar Produk
+                <a href="{{ route('pelanggan.riwayat') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-clipboard me-2"></i> Riwayat Pemesanan
+                </a>
+            </li>
+
+            <li class="nav-item mb-2">
+                <a href="{{ route('pelanggan.index') }}" class="nav-link text-dark fw-semibold">
+                    <i class="fas fa-users me-2"></i> Tentang Kami
                 </a>
             </li>
         </ul>
+        
         <ul class="nav flex-column mt-auto">
             <form action="{{ route('auth.logout') }}" method="POST">
                 @csrf

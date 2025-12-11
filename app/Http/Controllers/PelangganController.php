@@ -1,8 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class PelangganController extends Controller
 {
@@ -28,16 +32,16 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required'],
             'email'      => ['required', 'email'],
             'password'      => ['required'],
-            'role'     => ['required'], 
+            'role'     => ['required'],
         ]);
 
-        Users::create($request->only([
-            'name', 'email', 'password', 'role'
-        ]));
+        $data['password'] = Hash::make($request->password);
+
+        Users::create($data);
 
         return redirect()->route('pelanggan.home')->with('success', 'Penambahan Data Berhasil!');
     }
@@ -95,5 +99,23 @@ class PelangganController extends Controller
         $pelanggan->delete();
 
         return redirect()->route('pelanggan.index')->with('success', 'Penghapusan Data Berhasil!');
+    }
+
+    public function list()
+    {
+        $pageData['dataPelanggan'] = Users::all();
+        return view('admin.pelanggan.index', $pageData);
+    }
+
+    public function riwayat()
+    {
+        $user = Auth::user();
+
+        $pageData['dataOrder'] = Order::where('user_id', $user->user_id)
+            ->with('items.product')
+            ->latest()
+            ->get();
+
+        return view('admin.pelanggan.riwayat', $pageData);
     }
 }
