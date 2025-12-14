@@ -10,12 +10,6 @@
         --nav-color: #c5a88eff;
     }
 
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-    }
-
     body {
         font-family: 'Inter', sans-serif;
         background-color: var(--background-color);
