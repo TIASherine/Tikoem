@@ -31,7 +31,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $user = Auth::user();
+
+        $layout = $user->role === 'Admin'
+            ? 'layouts.admin.app'
+            : 'layouts.karyawan.app';
+
+        return view('admin.product.create',  compact('layout'));
     }
 
     /**
@@ -66,8 +72,16 @@ class ProductController extends Controller
      */
     public function edit(string $param1)
     {
-        $pageData['dataProduct'] = Product::findOrFail($param1);
-        return view('admin.product.edit', $pageData);
+        
+        $user = Auth::user();
+
+        $layout = $user->role === 'Admin'
+            ? 'layouts.admin.app'
+            : 'layouts.karyawan.app';
+
+        $dataProduct = Product::findOrFail($param1);
+
+        return view('admin.product.edit', compact('dataProduct', 'layout'));
     }
 
     /**

@@ -106,17 +106,6 @@ class KaryawanController extends Controller
         return redirect()->route('karyawan.index')->with('success', 'Penghapusan Data Berhasil!');
     }
 
-    public function dashboard()
-    {
-        $pesananBaru = Order::where('status', 'pending')->count();
-
-        $pendapatanHarian = Order::where('status', 'Selesai')
-            ->whereDate('created_at', today())
-            ->sum('total_price');
-
-        return view('admin.karyawan.dashboard', compact('pesananBaru', 'pendapatanHarian'));
-    }
-
     public function apiDashboard()
     {
         $pesananBaru = Order::where('status', 'pending')->count();

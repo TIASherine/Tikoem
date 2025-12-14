@@ -10,10 +10,19 @@
         --nav-color: #c5a88eff;
     }
 
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+
     body {
         font-family: 'Inter', sans-serif;
         background-color: var(--background-color);
         color: var(--dark-color);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
 
     .navbar {
@@ -151,6 +160,7 @@
     }
 
     .footer {
+        flex-shrink: 0;
         margin-top: auto;
         padding: 30px 0;
         background-color: var(--dark-color);

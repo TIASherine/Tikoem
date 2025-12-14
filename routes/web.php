@@ -86,7 +86,6 @@ Route::group([
     Route::post('update', [KaryawanController::class, 'update'])->name('update');
     Route::get('destroy/{param1}', [KaryawanController::class, 'destroy'])->name('destroy');
     Route::get('api/home', [KaryawanController::class, 'apiHome'])->name('apiHome');
-    Route::get('dashboard', [KaryawanController::class, 'dashboard'])->name('dashboard');
 });
 
 //Product

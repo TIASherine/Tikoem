@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.pelanggan.app')
+
+@section('content')
 
 <head>
     <title>Riwayat Pesanan</title>
     <style>
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f2f4f7;
-            padding: 25px;
-        }
-
         h1 {
             text-align: center;
             color: #333;
@@ -76,21 +71,16 @@
 
         .back {
             text-align: center;
-            margin-top: 25px;
+            margin-top: auto;
         }
 
         .back a {
-            background: #1976d2;
-            color: white;
+            color: var(--primary-color);
             padding: 12px 22px;
             border-radius: 8px;
             text-decoration: none;
             font-size: 15px;
             transition: 0.2s;
-        }
-
-        .back a:hover {
-            background: #125ea8;
         }
 
         .status-badge {
@@ -179,5 +169,4 @@
     </div>
 
 </body>
-
-</html>
+@endsection

@@ -27,12 +27,6 @@
     <div class="offcanvas-body p-3 d-flex flex-column" style="height: 100%;">
         <ul class="nav flex-column mb-auto">
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link text-dark fw-semibold">
-                    <i class="fas fa-user me-2"></i> Profil
-                </a>
-            </li>
-
-            <li class="nav-item mb-2">
                 <a href="{{ route('admin.index') }}" class="nav-link text-dark fw-semibold">
                     <i class="fas fa-user me-2"></i> Dashboard
                 </a>
