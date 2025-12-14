@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.pelanggan.app')
+
+@section('content')
 
 <head>
     <title>Keranjang Belanja</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f4ffec;
-            padding: 40px;
             background-image: url('https://i.pinimg.com/736x/57/19/31/57193110209ccde092dd7e46cb5b5ce7.jpg');
         }
 
         .receipt {
+            margin-top: 40px;
             width: 420px;
             background: #fff;
             padding: 25px;
-            margin: auto;
+            margin-left: auto;
+            margin-right: auto;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -103,7 +103,6 @@
 </head>
 
 <body>
-
     @if(session('success'))
     <div class="notif">
         {{ session('success') }}
@@ -181,16 +180,4 @@
             <a href="{{ route('product.list') }}">← Kembali ke Produk</a>
         </div>
     </div>
-
-    <script>
-        const method = document.getElementById('payment_method');
-        const qrisBox = document.getElementById('qris_box');
-
-        method.addEventListener('change', () => {
-            qrisBox.style.display = method.value === 'qris' ? 'block' : 'none';
-        });
-    </script>
-
-</body>
-
-</html>
+    @endsection

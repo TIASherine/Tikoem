@@ -70,9 +70,16 @@
         }
 
         .back {
+            position: fixed;
+            bottom: 86px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--background-color);
+            padding: 12px 0;
             text-align: center;
-            margin-top: auto;
+            z-index: 10;
         }
+
 
         .back a {
             color: var(--primary-color);
@@ -115,6 +122,8 @@
 
 <body>
 
+    <br>
+
     <h1>Riwayat Pesanan 📦</h1>
 
     <div class="list">
@@ -122,6 +131,8 @@
         @foreach($dataOrder as $order)
 
         <h3>Pesanan #{{ $order->order_id }} </h3>
+
+        <br>
 
         @foreach($order->items as $item)
         <div class="item">
@@ -165,8 +176,7 @@
     </div>
 
     <div class="back">
-        <a href="{{ route('home') }}">⟵ Kembali</a>
+        <a href="{{ route('home') }}" style="position: -webkit-sticky;">⟵ Kembali</a>
     </div>
 
-</body>
-@endsection
+    @endsection

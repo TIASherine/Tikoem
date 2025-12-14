@@ -1,120 +1,54 @@
-<!--
+@extends('layouts.admin.app')
 
-=========================================================
-* Volt Free - Bootstrap 5 Dashboard
-=========================================================
+@section('content')
+<style>
+    .content {
+        margin: 20px 100px;
+    }
 
-* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
-* Copyright 2021 Themesberg (https://www.themesberg.com)
-* License (https://themesberg.com/licensing)
+    .card {
+        border-radius: 16px !important;
+        background-color: var(--card-color) !important;
+        border: none !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
 
-* Designed and coded by https://themesberg.com
+    .card:hover {
+        transform: translateY(-3px);
+        transition: 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
 
-=========================================================
+    .btn-info {
+        background-color: var(--primary-color) !important;
+        border: none !important;
+    }
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
+    .btn-info:hover {
+        background-color: #643B26 !important;
+    }
 
--->
-<!DOCTYPE html>
-<html lang="en">
+    .btn-primary {
+        background-color: var(--primary-color);
+        border: none;
+        font-weight: 600;
+        border-radius: 10px;
+    }
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!-- Primary Meta Tags -->
-    <title> Admin Panel - Tikoem </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
-    <meta name="author" content="Themesberg">
+    .btn-primary:hover {
+        background-color: #643B26;
+    }
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets-admin/img/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ asset('assets-admin/img/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('assets-admin/img/favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('assets-admin/img/favicon/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ asset('assets-admin/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
+    .btn-outline-primary {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
 
-    <!-- Volt CSS -->
-    <link type="text/css" href="{{ asset('assets-admin/css/volt.css') }}" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary-color: #7B4B33;
-            --secondary-color: #D4B892;
-            --tertiary-color: #6C8360;
-            --dark-color: #3B302B;
-            --light-color: #f5ece5;
-            --background-color: rgb(250, 247, 243);
-            --card-color: #f7f0eaff;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--dark-color);
-            font-family: 'Inter', sans-serif;
-        }
-
-        .content {
-            margin: 20px 100px;
-        }
-
-        .card {
-            border-radius: 16px !important;
-            background-color: var(--card-color) !important;
-            border: none !important;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            transition: 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .btn-info {
-            background-color: var(--primary-color) !important;
-            border: none !important;
-        }
-
-        .btn-info:hover {
-            background-color: #643B26 !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border: none;
-            font-weight: 600;
-            border-radius: 10px;
-        }
-
-        .btn-primary:hover {
-            background-color: #643B26;
-        }
-
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        footer {
-            background-color: var(--dark-color) !important;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-        }
-
-        footer p,
-        footer a {
-            color: #c7c7c7 !important;
-        }
-    </style>
+    .btn-outline-primary:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+</style>
 </head>
 
 <body>
@@ -141,8 +75,9 @@
                 <p class="mb-0"> Form Perubahan Data Karyawan </p>
             </div>
 
-            <a href="{{ route('karyawan.index') }}" class="btn btn-outline-primary">
-                <i class="fas fa-bars"></i> Menu
+            <a href="{{ route('karyawan.index') }}" 
+            class="btn btn-sm btn-gray-800 d-inline-flex align-items-center"> 
+            Kembali
             </a>
         </div>
 
@@ -226,13 +161,4 @@
             </div>
         </footer>
     </main>
-
-    <!-- Core -->
-    <script src="{{ asset('assets-admin/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('assets-admin/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-
-    <!-- Vendor JS -->
-    <script src="{{ asset('assets-admin/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
-</body>
-
-</html>
+    @endsection
